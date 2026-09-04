@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#FF6F0F">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#FF6F0F"/>
+    <rect x="470" y="200" width="260" height="400" rx="34" fill="#ffffff"/>
+    <rect x="510" y="262" width="120" height="16" rx="8" fill="#FF6F0F"/>
+    <rect x="510" y="312" width="180" height="60" rx="12" fill="#F6F8FA"/>
+    <rect x="510" y="392" width="180" height="60" rx="12" fill="#F6F8FA"/>
+    <rect x="510" y="500" width="180" height="44" rx="22" fill="#FF6F0F"/>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="_ds/m365-front-bd651665-ce80-454e-9cf8-97107204363a/tokens/colors.css">
+<link rel="stylesheet" href="_ds/m365-front-bd651665-ce80-454e-9cf8-97107204363a/tokens/typography.css">
+<link rel="stylesheet" href="_ds/m365-front-bd651665-ce80-454e-9cf8-97107204363a/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/m365-front-bd651665-ce80-454e-9cf8-97107204363a/tokens/fig-tokens.css">
+<link rel="stylesheet" href="_ds/m365-front-bd651665-ce80-454e-9cf8-97107204363a/tokens/base.css">
+<style>
+  :root { --font-sans: "Noto Sans KR", "Noto Sans CJK KR", sans-serif; }
+  body, input, textarea, button { font-family: "Noto Sans KR", "Noto Sans CJK KR", sans-serif; }
+</style>
+<script src="_ds/m365-front-bd651665-ce80-454e-9cf8-97107204363a/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: #eceff1; font-family: var(--font-sans); }
+  a { color: var(--m-blue); text-decoration: none; }
+  a:hover { color: var(--m-blue-hover); }
+  @keyframes m-sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes m-fade-in { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</helmet>
+
+<div style="min-height: 100%; display: flex; justify-content: center; background: #eceff1; padding: 0; font-family: var(--font-sans); -webkit-font-smoothing: antialiased;">
+<div style="width: 390px; background: #f6f8fa; box-shadow: 0 8px 40px rgba(0,0,0,.14); position: relative; overflow: hidden;">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px 6px; background: #ffffff; font-size: 13px; font-weight: 500; color: var(--m-ink-900);">
+    <span>9:41</span>
+    <span style="display: flex; align-items: center; gap: 6px; color: var(--m-ink-700); font-size: 12px;">LTE <span style="font-weight:700;">100%</span></span>
+  </div>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 20px 14px; background: #ffffff;">
+    <img src="_ds/m365-front-bd651665-ce80-454e-9cf8-97107204363a/assets/logo/mobility365.svg" alt="mobility365" style="height: 22px; display: block;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div onClick="{{ goNoti }}" style="position: relative; width: 24px; height: 24px; cursor: pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg>
+        <span style="position: absolute; top: 1px; right: 1px; width: 7px; height: 7px; border-radius: 999px; background: var(--m-red); border: 1.5px solid #fff;"></span>
+      </div>
+      <div onClick="{{ goMore }}" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <div ref="{{ stripRef }}" style="position: relative; display: flex; align-items: center; gap: 8px; padding: 12px 20px; background: var(--m-orange-50); border-top: 1px solid #ffe3cf;">
+    <span style="font-size: 13px; color: var(--m-ink-600);">잔여 이용권</span>
+    <span style="font-size: 14px; font-weight: 700; color: var(--m-orange); letter-spacing: -0.01em;">{{ availLabel }}</span>
+    <div ref="{{ iconRef }}" onClick="{{ toggleTip }}" style="position: relative; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin: -4px; cursor: pointer; z-index: 31;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ff6f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><circle cx="12" cy="7.8" r="0.4" fill="currentColor" stroke="currentColor"></circle></svg>
+    </div>
+    <sc-if value="{{ tipOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; top: 100%; left: 16px; right: 16px; z-index: 30; margin-top: 2px; padding-top: 7px; animation: m-fade-in 160ms ease-out both;">
+        <div style="position: absolute; top: 0; left: {{ arrowLeft }}; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 8px solid var(--m-ink-900);"></div>
+        <div style="position: relative; background: var(--m-ink-900); color: #fff; border-radius: 8px; padding: 10px 14px; font-size: 11px; line-height: 1.55; letter-spacing: -0.02em; box-shadow: 0 6px 24px rgba(0,0,0,.16);">이용권은 계약 완료 시 매입 1건, 매도 2건이 차감되며 이전완료 시 5건이 차감됩니다.&nbsp;</div>
+      </div>
+    </sc-if>
+    <span style="flex: 1;"></span>
+    <span onClick="{{ goBuy }}" style="font-size: 12px; font-weight: 500; color: var(--m-orange); display: flex; align-items: center; gap: 2px; cursor: pointer;">충전하기
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff6f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+    </span>
+  </div>
+
+  <div style="padding: 22px 16px 20px; background: #ffffff;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 0 4px 14px;">
+      <h2 style="margin: 0; font-size: 19px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">전자계약</h2>
+      
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.06fr 1fr; gap: 10px;">
+      <div onClick="{{ openSheet }}" style="position: relative; overflow: hidden; border-radius: 16px; background: var(--m-orange); box-shadow: 0 4px 14px rgba(255,111,15,.28); padding: 18px 16px 16px; display: flex; flex-direction: column; justify-content: space-between; min-height: 196px; cursor: pointer; transition: background 140ms ease, box-shadow 140ms ease, transform 140ms ease;" style-hover="background: var(--m-orange-hover); box-shadow: 0 8px 22px rgba(255,111,15,.36); transform: translateY(-2px);" style-active="transform: scale(.985) translateY(0); box-shadow: 0 3px 10px rgba(255,111,15,.28);">
+        <div>
+          <div style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; background: rgba(255,255,255,.22); color: #fff; font-size: 11px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em;">매입 1건 · 매도 2건 차감</div>
+          <div style="font-size: 18px; font-weight: 700; line-height: 1.35; color: #fff; letter-spacing: -0.02em;">매입/매도<br>계약 작성하기</div>
+        </div>
+        <div style="display: flex; align-items: flex-end; justify-content: flex-end;">
+          <svg width="72" height="72" viewBox="0 0 64 64" fill="none" style="margin: -6px -6px -6px 0;">
+            <rect x="13" y="8" width="32" height="42" rx="4" fill="#fff" opacity=".95"></rect>
+            <path d="M21 20h16M21 27h16M21 34h9" stroke="#ff6f0f" stroke-width="2.4" stroke-linecap="round" opacity=".55"></path>
+            <path d="M35 47l4.5-1.3 15-15a3.2 3.2 0 0 0 0-4.5l-1.2-1.2a3.2 3.2 0 0 0-4.5 0l-15 15L33.4 45.6z" fill="#2e2e2e"></path>
+            <path d="M46.6 27.4l4.4 4.4" stroke="#fff" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 10px;">
+        <div style="background: #fff; border: 1px solid var(--m-line-200); border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.05); padding: 14px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease, transform 140ms ease;" style-hover="border-color: var(--m-orange); background: var(--m-orange-50); box-shadow: 0 6px 16px rgba(255,111,15,.14); transform: translateY(-1px);">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 4px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.03em;">진행 중 계약</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M9 5l7 7-7 7"></path></svg>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 2px; margin-top: 10px;">
+            <span style="font-size: 24px; font-weight: 900; color: var(--m-orange); letter-spacing: -0.03em; line-height: 1;">3</span>
+            <span style="font-size: 14px; font-weight: 700; color: var(--m-orange);">건</span>
+          </div>
+        </div>
+        <div style="position: relative; overflow: hidden; background: #fff; border: 1px solid var(--m-line-200); border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.05); padding: 14px; display: flex; flex-direction: column; cursor: pointer; transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease, transform 140ms ease;" style-hover="border-color: var(--m-orange); background: var(--m-orange-50); box-shadow: 0 6px 16px rgba(255,111,15,.14); transform: translateY(-1px);">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 4px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.03em;">완료 문서함</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M9 5l7 7-7 7"></path></svg>
+          </div>
+          <div style="margin-top: 3px; font-size: 11px; color: var(--m-ink-400); letter-spacing: -0.03em;">보관문서 보기</div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style="position: absolute; right: 10px; bottom: 8px;">
+            <path d="M3.5 7.4A2 2 0 0 1 5.5 5.4h3.2l1.6 2h8.2a2 2 0 0 1 2 2v7.2a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2V7.4z" fill="#dce7f4"></path>
+            <path d="M9.2 13.6l2.3 2.3 4.2-4.6" stroke="#005cb9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 16px 20px; background: #ffffff;">
+    <div style="position: relative; overflow: hidden; border-radius: 16px; background: var(--m-orange-banner); padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: #a2621a; letter-spacing: -0.01em; margin-bottom: 5px;">이용권 안내</div>
+        <div style="font-size: 16px; font-weight: 700; color: #5c3a05; line-height: 1.4; letter-spacing: -0.03em; white-space: nowrap;">이용권 <span style="color: var(--m-orange);">1건 1,100원</span> · 최소 10건</div>
+      </div>
+      <img src="_ds/m365-front-bd651665-ce80-454e-9cf8-97107204363a/assets/illustrations/gift-box.png" alt="" style="width: 62px; height: 62px; object-fit: contain; flex: none; margin: -8px -4px -8px 0;">
+    </div>
+  </div>
+
+  <div style="height: 8px; background: var(--m-surface-gray);"></div>
+
+  <div style="padding: 22px 16px; background: #ffffff;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 0 4px 16px;">
+      <h2 style="margin: 0; font-size: 19px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">자주 쓰는 서비스</h2>
+      
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px 4px;">
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 6px 0; border-radius: 14px; cursor: pointer; transition: transform 140ms ease, background 140ms ease;" style-hover="transform: translateY(-3px); background: #fafbfc;">
+        <div style="width: 58px; height: 58px; border-radius: 18px; background: #fff4ec; display: flex; align-items: center; justify-content: center;">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <rect x="7" y="4" width="18" height="24" rx="3.5" fill="#ff6f0f"></rect>
+            <rect x="10" y="7.5" width="12" height="5" rx="1.6" fill="#fff"></rect>
+            <circle cx="11.6" cy="17" r="1.5" fill="#fff"></circle><circle cx="16" cy="17" r="1.5" fill="#fff"></circle><circle cx="20.4" cy="17" r="1.5" fill="#fff"></circle>
+            <circle cx="11.6" cy="22" r="1.5" fill="#fff"></circle><circle cx="16" cy="22" r="1.5" fill="#fff"></circle>
+            <rect x="19" y="20.5" width="3" height="3" rx="1.5" fill="#ffe7b8"></rect>
+          </svg>
+        </div>
+        <span style="font-size: 12px; font-weight: 500; color: var(--m-ink-800); text-align: center; letter-spacing: -0.03em;">이전비 계산기</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 6px 0; border-radius: 14px; cursor: pointer; transition: transform 140ms ease, background 140ms ease;" style-hover="transform: translateY(-3px); background: #fafbfc;">
+        <div style="width: 58px; height: 58px; border-radius: 18px; background: #f0f5fb; display: flex; align-items: center; justify-content: center;">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <path d="M16 4l9 3v8.4c0 5.4-3.6 9.9-9 11.6-5.4-1.7-9-6.2-9-11.6V7l9-3z" fill="#005cb9"></path>
+            <path d="M9.5 18.5h13l-1.4-3.6a2 2 0 0 0-1.9-1.3h-6.4a2 2 0 0 0-1.9 1.3L9.5 18.5z" fill="#fff"></path>
+            <circle cx="12" cy="19.4" r="1.3" fill="#fff"></circle><circle cx="20" cy="19.4" r="1.3" fill="#fff"></circle>
+          </svg>
+        </div>
+        <span style="font-size: 12px; font-weight: 500; color: var(--m-ink-800); text-align: center; letter-spacing: -0.03em;">시승보험</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 6px 0; border-radius: 14px; cursor: pointer; transition: transform 140ms ease, background 140ms ease;" style-hover="transform: translateY(-3px); background: #fafbfc;">
+        <div onClick="{{ goFinance }}" style="width: 58px; height: 58px; border-radius: 18px; background: #eff6f5; display: flex; align-items: center; justify-content: center;">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="8" width="24" height="16" rx="3.2" fill="#5aa29c"></rect>
+            <path d="M4 13h24" stroke="#fff" stroke-width="2.6"></path>
+            <rect x="7.5" y="17.5" width="7" height="2.4" rx="1.2" fill="#fff"></rect>
+            <circle cx="23" cy="18.8" r="2" fill="#ffe7b8"></circle>
+          </svg>
+        </div>
+        <span style="font-size: 12px; font-weight: 500; color: var(--m-ink-800); text-align: center; letter-spacing: -0.03em;">할부</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 6px 0; border-radius: 14px; cursor: pointer; transition: transform 140ms ease, background 140ms ease;" style-hover="transform: translateY(-3px); background: #fafbfc;">
+        <div onClick="{{ goInsurance }}" style="width: 58px; height: 58px; border-radius: 18px; background: #fff4ec; display: flex; align-items: center; justify-content: center;">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <path d="M16 5c-6.1 0-11 4.5-11 10h22c0-5.5-4.9-10-11-10z" fill="#ff6f0f"></path>
+            <path d="M16 15v9.5a3 3 0 0 0 6 0" stroke="#2e2e2e" stroke-width="2.2" stroke-linecap="round"></path>
+            <path d="M5 15h22" stroke="#ffe7b8" stroke-width="2"></path>
+          </svg>
+        </div>
+        <span style="font-size: 12px; font-weight: 500; color: var(--m-ink-800); text-align: center; letter-spacing: -0.03em;">보험</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="height: 8px; background: var(--m-surface-gray);"></div>
+
+  <div style="padding: 20px 16px 24px; background: #ffffff; display: flex; flex-direction: column; gap: 12px;">
+    <div style="position: relative; overflow: hidden; border-radius: 16px; background: #eef3fa; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--m-blue); margin-bottom: 6px;">성능점검기록부</div>
+        <div style="font-size: 16px; font-weight: 700; color: var(--m-ink-900); line-height: 1.45; letter-spacing: -0.02em;">차량 정보 입력 없이<br>3분이면 발급 완료</div>
+        <div style="margin-top: 10px; font-size: 12px; font-weight: 500; color: var(--m-blue); display: flex; align-items: center; gap: 2px;">발급 방법 보기
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#005cb9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+      </div>
+      <svg width="76" height="76" viewBox="0 0 80 80" fill="none" style="flex: none; margin: -6px -4px;">
+        <rect x="17" y="12" width="40" height="52" rx="5" fill="#fff"></rect>
+        <path d="M25 25h24M25 33h24M25 41h14" stroke="#005cb9" stroke-width="2.6" stroke-linecap="round" opacity=".35"></path>
+        <circle cx="52" cy="50" r="14" fill="#005cb9"></circle>
+        <path d="M46 50.4l4 4 8-8.4" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <div style="position: relative; overflow: hidden; border-radius: 16px; background: var(--m-orange-50); padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--m-orange); margin-bottom: 6px;">이용권 안내</div>
+        <div style="font-size: 16px; font-weight: 700; color: var(--m-ink-900); line-height: 1.45; letter-spacing: -0.02em;">필요한 만큼만<br>낱개로 구매하세요</div>
+        <div onClick="{{ goBuy }}" style="margin-top: 10px; font-size: 12px; font-weight: 500; color: var(--m-orange); display: flex; align-items: center; gap: 2px; cursor: pointer;">이용권 구매하기
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ff6f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+      </div>
+      <svg width="76" height="76" viewBox="0 0 80 80" fill="none" style="flex: none; margin: -6px -4px;">
+        <rect x="12" y="44" width="16" height="22" rx="3" fill="#ffe3cf"></rect>
+        <rect x="32" y="32" width="16" height="34" rx="3" fill="#ffb27a"></rect>
+        <rect x="52" y="18" width="16" height="48" rx="3" fill="#ff6f0f"></rect>
+      </svg>
+    </div>
+  </div>
+
+  <div style="background: var(--m-surface-gray); padding: 22px 20px 30px;">
+    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--m-ink-700);">한국모빌리티전자계약(주) 사업자 정보
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555b63" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15l7-7 7 7"></path></svg>
+    </div>
+    <div style="margin-top: 14px; font-size: 11.5px; line-height: 1.8; color: var(--m-ink-500);">
+      <div>대표이사 신인철 <span style="color: var(--m-line-400); padding: 0 4px;">|</span> 서울시 강남구 논현로 646</div>
+      <div>사업자등록번호 733-81-03784</div>
+      <div>통신판매업신고번호 2026-서울강남-01959</div>
+      <div>대표번호 02-6188-8402 <span style="color: var(--m-ink-300);">(평일 09:30~17:30 / 점심 12:00~13:00)</span></div>
+    </div>
+    <div style="margin-top: 14px; font-size: 11px; line-height: 1.7; color: var(--m-ink-400);">한국모빌리티전자계약(주)는 통신판매중개자로 전자계약 당사자가 아니며, 상품거래정보 및 거래에 대하여 책임을 지지 않습니다.</div>
+    <div style="margin-top: 12px; font-size: 10.5px; color: var(--m-ink-300);">Copyright © Korea Mobility e-Contract Co.,LTD. All rights reserved.</div>
+    <div style="margin-top: 16px; display: flex; align-items: center; gap: 10px; font-size: 11.5px; font-weight: 500; color: var(--m-ink-600);">
+      <span>회사소개</span><span style="color: var(--m-line-400);">|</span><span>이용약관</span><span style="color: var(--m-line-400);">|</span><span>개인정보처리방침</span>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isNoti }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #ffffff; min-height: 760px;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px 16px; background: #ffffff;">
+      <div onClick="{{ goHome }}" style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 8px;" style-hover="background: var(--m-surface-gray);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <h1 style="flex: 1; margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">알림</h1>
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 500; color: var(--m-ink-400); cursor: pointer;" style-hover="color: var(--m-orange);">모두 읽음</span>
+        <div style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 8px;" style-hover="background: var(--m-surface-gray);">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 2.5v2.5M12 19v2.5M4.2 7.2l2.1 1.2M17.7 15.6l2.1 1.2M4.2 16.8l2.1-1.2M17.7 8.4l2.1-1.2"></path></svg>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 8px 20px; background: var(--m-surface-gray); font-size: 12px; font-weight: 700; color: var(--m-ink-500); letter-spacing: -0.02em;">오늘</div>
+
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: flex; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--m-line-200); background: var(--m-orange-50); cursor: pointer; transition: background 140ms ease;" style-hover="background: #ffece0;">
+        <div style="flex: none; width: 38px; height: 38px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,.06);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h7l5 5v13H6z"></path><path d="M13 3v5h5"></path><path d="M9 14.2l2.2 2.2 4-4.6"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">계약완료</span>
+            <span style="width: 6px; height: 6px; border-radius: 999px; background: var(--m-orange); flex: none;"></span>
+          </div>
+          <div style="margin-top: 4px; font-size: 13px; line-height: 1.5; color: var(--m-ink-700); letter-spacing: -0.02em;"><span style="font-weight: 700; color: var(--m-ink-900);">12가1234</span> 의 매도 계약이 완료되었습니다.</div>
+          <div style="margin-top: 6px; font-size: 11px; color: var(--m-ink-300);">오후 12:09</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--m-line-200); background: var(--m-orange-50); cursor: pointer; transition: background 140ms ease;" style-hover="background: #ffece0;">
+        <div style="flex: none; width: 38px; height: 38px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,.06);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h7l5 5v13H6z"></path><path d="M13 3v5h5"></path><path d="M9 14.2l2.2 2.2 4-4.6"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">계약완료</span>
+            <span style="width: 6px; height: 6px; border-radius: 999px; background: var(--m-orange); flex: none;"></span>
+          </div>
+          <div style="margin-top: 4px; font-size: 13px; line-height: 1.5; color: var(--m-ink-700); letter-spacing: -0.02em;"><span style="font-weight: 700; color: var(--m-ink-900);">12가1234</span> 의 매입 계약이 완료되었습니다.</div>
+          <div style="margin-top: 6px; font-size: 11px; color: var(--m-ink-300);">오후 12:09</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 8px 20px; background: var(--m-surface-gray); font-size: 12px; font-weight: 700; color: var(--m-ink-500); letter-spacing: -0.02em;">2026-08-04</div>
+
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: flex; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--m-line-200); cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+        <div style="flex: none; width: 38px; height: 38px; border-radius: 12px; background: #f0f5fb; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#005cb9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2.5"></rect><path d="M3 10.5h18"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 14px; font-weight: 700; color: var(--m-ink-600); letter-spacing: -0.02em;">결제</div>
+          <div style="margin-top: 4px; font-size: 13px; line-height: 1.5; color: var(--m-ink-500); letter-spacing: -0.02em;">이용권 구매가 완료되었습니다.</div>
+          <div style="margin-top: 6px; font-size: 11px; color: var(--m-ink-300);">오후 12:09</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--m-line-200); cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+        <div style="flex: none; width: 38px; height: 38px; border-radius: 12px; background: #eff6f5; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5aa29c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 8v8M9 12h6"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 14px; font-weight: 700; color: var(--m-ink-600); letter-spacing: -0.02em;">리워드</div>
+          <div style="margin-top: 4px; font-size: 13px; line-height: 1.5; color: var(--m-ink-500); letter-spacing: -0.02em;">정산예정인 리워드가 <span style="font-weight: 700; color: var(--m-ink-700);">2건</span> 있습니다. 확인해주세요.</div>
+          <div style="margin-top: 6px; font-size: 11px; color: var(--m-ink-300);">오후 12:09</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--m-line-200); cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+        <div style="flex: none; width: 38px; height: 38px; border-radius: 12px; background: #eff6f5; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5aa29c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 8v8M9 12h6"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 14px; font-weight: 700; color: var(--m-ink-600); letter-spacing: -0.02em;">리워드</div>
+          <div style="margin-top: 4px; font-size: 13px; line-height: 1.5; color: var(--m-ink-500); letter-spacing: -0.02em;">리워드 <span style="font-weight: 700; color: var(--m-green);">100,000원</span>이 정산되었습니다.</div>
+          <div style="margin-top: 6px; font-size: 11px; color: var(--m-ink-300);">오후 12:09</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--m-line-200); cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+        <div style="flex: none; width: 38px; height: 38px; border-radius: 12px; background: var(--m-surface-gray); display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 14px; font-weight: 700; color: var(--m-ink-600); letter-spacing: -0.02em;">만료</div>
+          <div style="margin-top: 4px; font-size: 13px; line-height: 1.5; color: var(--m-ink-500); letter-spacing: -0.02em;">이용권 <span style="font-weight: 700; color: var(--m-ink-700);">3건</span>이 만료되었습니다.</div>
+          <div style="margin-top: 6px; font-size: 11px; color: var(--m-ink-300);">오후 12:09</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 28px 20px 40px; text-align: center; font-size: 11.5px; color: var(--m-ink-300); letter-spacing: -0.02em;">알림은 최근 30일까지 보관됩니다.</div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isRwd }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #fff; min-height: 812px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #fff; border-bottom: 1px solid var(--m-line-200);">
+      <div onClick="{{ goBack }}" style="display: flex; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <h1 style="flex: 1; margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">리워드 내역</h1>
+    </div>
+
+    <div style="padding: 14px 16px; background: #fff;">
+      <div onClick="{{ openRwdFilter }}" style="height: 48px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; background: #fff; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: border-color 140ms ease;" style-hover="border-color: var(--m-orange);">
+        <span style="flex: 1; font-size: 14px; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ rwdFilterLabel }}</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5l6 6 6-6"></path></svg>
+      </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 16px; background: var(--m-surface-gray);">
+      <sc-for list="{{ rwdRows }}" as="r" hint-placeholder-count="5">
+        <div style="background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.06); padding: 16px 16px 14px;">
+          <div style="display: flex; align-items: baseline; gap: 7px; padding-bottom: 12px; border-bottom: 1px solid var(--m-line-200);">
+            <span style="font-size: 15px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ r.item }}</span>
+            <span style="flex: 1; font-size: 13px; color: var(--m-ink-600); letter-spacing: -0.02em;">{{ r.sub }}</span>
+            <span style="font-size: 16px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ r.amount }}</span>
+          </div>
+          <div style="padding-top: 12px; display: flex; flex-direction: column; gap: 6px;">
+            <div style="font-size: 13.5px; color: var(--m-ink-800); letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ r.plate }} <span style="color: var(--m-line-300); padding: 0 3px;">|</span> <span style="color: var(--m-ink-500);">{{ r.model }}</span></div>
+            <div style="font-size: 13.5px; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ r.unitLabel }} <span style="color: var(--m-line-300); padding: 0 3px;">|</span> <span style="color: var(--m-ink-600);">{{ r.paidAt }} 지급완료</span></div>
+          </div>
+        </div>
+      </sc-for>
+
+      <sc-if value="{{ rwdEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="flex: 1; min-height: 300px; padding: 40px 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: #fff; border-radius: 12px;">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#c3c3c3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="11.5" rx="2"></rect><path d="M3.5 12.5h17M12 8.5V20"></path><path d="M12 8.5c-3.2 0-4.6-.6-4.6-2.2S9.2 4.5 12 8.5zM12 8.5c3.2 0 4.6-.6 4.6-2.2S14.8 4.5 12 8.5z"></path></svg>
+          <div style="margin-top: 6px; font-size: 14px; font-weight: 700; color: var(--m-ink-800); letter-spacing: -0.02em;">아직 리워드 내역이 없습니다.</div>
+          <div style="font-size: 12.5px; line-height: 1.6; color: var(--m-ink-500); text-align: center; letter-spacing: -0.02em;">고객에게 할부·보험을 추천하고<br>성사되면 리워드가 지급됩니다.</div>
+          <div style="margin-top: 16px; display: flex; gap: 10px;">
+            <div onClick="{{ goFinance }}" style="height: 42px; padding: 0 22px; border-radius: 999px; background: var(--m-orange); color: #fff; font-size: 14px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-orange-hover);">할부 추천</div>
+            <div onClick="{{ goInsurance }}" style="height: 42px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--m-line-300); color: var(--m-ink-800); font-size: 14px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; cursor: pointer; transition: all 140ms ease;" style-hover="border-color: var(--m-orange); color: var(--m-orange);">보험 추천</div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="position: sticky; bottom: 0; display: flex; align-items: center; padding: 12px 20px 16px; background: #fff; border-top: 1px solid var(--m-line-200);">
+      <span style="flex: 1; font-size: 12.5px; color: var(--m-ink-500); letter-spacing: -0.02em;">총 {{ rwdTotal }}</span>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 6.5 7.5 12l5.5 5.5M18 6.5 12.5 12l5.5 5.5"></path></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6.5 9.5 12l5.5 5.5"></path></svg>
+        <sc-for list="{{ rwdPages }}" as="pg" hint-placeholder-count="3">
+          <span onClick="{{ pg.go }}" style="min-width: 18px; text-align: center; font-size: 13.5px; font-weight: {{ pg.weight }}; color: {{ pg.color }}; cursor: pointer;">{{ pg.n }}</span>
+        </sc-for>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6.5 15 12l-5.5 5.5"></path></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6.5 11.5 12 6 17.5M11 6.5 16.5 12 11 17.5"></path></svg>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ rwdSheet }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; z-index: 46; display: flex; flex-direction: column; justify-content: flex-end;">
+      <div onClick="{{ closeRwdFilter }}" style="position: absolute; inset: 0; background: rgba(0,0,0,.55); animation: m-fade-in 200ms ease-out both;"></div>
+      <div style="position: relative; background: #fff; border-radius: 20px 20px 0 0; padding: 22px 20px 12px; box-shadow: 0 -6px 24px rgba(0,0,0,.16); animation: m-sheet-up 280ms cubic-bezier(.2,0,0,1) both;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h2 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">리워드 항목</h2>
+          <div onClick="{{ closeRwdFilter }}" style="display: flex; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+          </div>
+        </div>
+        <div style="margin-top: 18px; display: flex; flex-direction: column;">
+          <sc-for list="{{ rwdOpts }}" as="s" hint-placeholder-count="5">
+            <div onClick="{{ s.toggle }}" style="display: flex; align-items: center; gap: 12px; padding: 11px 0; cursor: pointer;">
+              <span style="flex: none; width: 20px; height: 20px; border-radius: 4px; background: {{ s.boxBg }}; border: 1.6px solid {{ s.boxBorder }}; display: flex; align-items: center; justify-content: center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>
+              </span>
+              <span style="font-size: 14.5px; font-weight: 500; color: {{ s.textColor }}; letter-spacing: -0.02em;">{{ s.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div onClick="{{ applyRwdFilter }}" style="margin: 18px 0 8px; height: 52px; border-radius: 999px; background: var(--m-orange); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-orange-hover);">확인</div>
+        <div style="display: flex; justify-content: center; padding: 6px 0 8px;"><span style="width: 128px; height: 4px; border-radius: 999px; background: #2e2e2e;"></span></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isApply }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #fff; min-height: 812px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #fff;">
+      <div onClick="{{ applyBack }}" style="display: flex; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <h1 style="flex: 1; margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ applyTitle }}</h1>
+      <div onClick="{{ goNoti }}" style="display: flex; cursor: pointer;">
+        
+      </div>
+      <div onClick="{{ goMore }}" style="display: flex; cursor: pointer;">
+        
+      </div>
+    </div>
+
+    <sc-if value="{{ applyList }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="padding: 4px 20px 0; font-size: 15.5px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.03em;">{{ applyLead }}</div>
+        <div style="padding: 14px 16px 18px;">
+          <div style="height: 48px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+            <span style="flex: 1; font-size: 14px; color: var(--m-ink-400); letter-spacing: -0.02em;">차량 번호 검색 (예: 12가5678)</span>
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="6.4"></circle><path d="M16 16l4 4"></path></svg>
+          </div>
+        </div>
+        <div style="height: 8px; background: var(--m-surface-gray);"></div>
+        <div style="padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+          <sc-for list="{{ applyCars }}" as="c" hint-placeholder-count="3">
+            <div onClick="{{ c.pick }}" style="background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.06); padding: 16px; cursor: pointer; transition: box-shadow 140ms ease, transform 140ms ease;" style-hover="box-shadow: 0 4px 16px rgba(0,0,0,.10); transform: translateY(-2px);">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 16px; font-weight: 700; color: var(--m-orange); letter-spacing: -0.02em;">{{ c.plate }}</span>
+                <sc-if value="{{ c.hasTag }}" hint-placeholder-val="{{ false }}">
+                  <span style="height: 19px; padding: 0 7px; border-radius: 4px; background: var(--m-surface-gray); color: var(--m-ink-600); font-size: 10.5px; font-weight: 500; display: inline-flex; align-items: center; letter-spacing: -0.02em;">계약 진행 중</span>
+                </sc-if>
+              </div>
+              <div style="margin-top: 6px; font-size: 13.5px; color: var(--m-ink-800); letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ c.model }}</div>
+              <div style="margin-top: 12px; padding: 12px 12px; background: var(--m-surface-gray); border-radius: 8px; display: flex; flex-direction: column; gap: 7px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px;"><span style="color: var(--m-ink-500);">제시번호</span><span style="color: var(--m-ink-800);">{{ c.offerNo }}</span></div>
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px;"><span style="color: var(--m-ink-500);">년식</span><span style="color: var(--m-ink-800);">{{ c.year }}</span></div>
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px;"><span style="color: var(--m-ink-500);">주행거리</span><span style="color: var(--m-ink-800);">{{ c.km }}</span></div>
+              </div>
+              <div style="margin-top: 12px; display: flex; align-items: baseline; justify-content: space-between;">
+                <span style="font-size: 13.5px; font-weight: 500; color: var(--m-ink-800); letter-spacing: -0.02em;">제시 금액</span>
+                <span style="font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.03em;">{{ c.price }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ applyForm }}" hint-placeholder-val="{{ false }}">
+      <div style="flex: 1; display: flex; flex-direction: column;">
+        <div style="padding: 4px 16px 18px;">
+          <div style="background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.06); padding: 16px;">
+            <div style="font-size: 16px; font-weight: 700; color: var(--m-orange); letter-spacing: -0.02em;">{{ carPlate }}</div>
+            <div style="margin-top: 6px; font-size: 13.5px; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ carModel }}</div>
+            <div style="margin-top: 12px; padding: 12px; background: var(--m-surface-gray); border-radius: 8px; display: flex; flex-direction: column; gap: 7px;">
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px;"><span style="color: var(--m-ink-500);">제시번호</span><span style="color: var(--m-ink-800);">{{ carOfferNo }}</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px;"><span style="color: var(--m-ink-500);">년식</span><span style="color: var(--m-ink-800);">{{ carYear }}</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px;"><span style="color: var(--m-ink-500);">주행거리</span><span style="color: var(--m-ink-800);">{{ carKm }}</span></div>
+            </div>
+            <div style="margin-top: 12px; display: flex; align-items: baseline; justify-content: space-between;">
+              <span style="font-size: 13.5px; font-weight: 500; color: var(--m-ink-800); letter-spacing: -0.02em;">제시 금액</span>
+              <span style="font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.03em;">{{ carPrice }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 8px; background: var(--m-surface-gray);"></div>
+
+        <div style="padding: 18px 16px 0;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">고객정보</span>
+            <div onClick="{{ openContacts }}" style="height: 36px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 999px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--m-ink-800); letter-spacing: -0.02em; cursor: pointer; transition: all 140ms ease;" style-hover="border-color: var(--m-orange); color: var(--m-orange);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.6" r="3.4"></circle><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"></path></svg>
+              연락처 불러오기
+            </div>
+          </div>
+
+          <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+            <input value="{{ nameVal }}" onChange="{{ onName }}" placeholder="성명 입력" style="height: 50px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; font-family: inherit; font-size: 14px; color: var(--m-ink-900); letter-spacing: -0.02em; outline: none; background: #fff;" style-focus="border-color: var(--m-orange);">
+            <input value="{{ phoneVal }}" onChange="{{ onPhone }}" placeholder="휴대폰번호 입력" inputmode="tel" style="height: 50px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; font-family: inherit; font-size: 14px; color: var(--m-ink-900); letter-spacing: -0.02em; outline: none; background: #fff;" style-focus="border-color: var(--m-orange);">
+          </div>
+
+          <sc-if value="{{ isInsurance }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 18px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                <span style="font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">보험정보</span>
+                <div onClick="{{ openAdFee }}" style="display: flex; align-items: center; gap: 4px; padding: 4px 0; font-size: 12.5px; color: var(--m-ink-500); letter-spacing: -0.02em; cursor: pointer; transition: color 140ms ease;" style-hover="color: var(--m-orange);">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><circle cx="12" cy="7.8" r="0.4" fill="currentColor" stroke="currentColor"></circle></svg>
+                  <span style="text-decoration: underline; text-underline-offset: 2px;">광고비 안내</span>
+                </div>
+              </div>
+              <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; gap: 10px;">
+                  <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="2">
+                    <div onClick="{{ k.pick }}" style="flex: 1; height: 48px; border: 1px solid {{ k.border }}; border-radius: 8px; background: {{ k.bg }}; color: {{ k.color }}; font-size: 14.5px; font-weight: {{ k.weight }}; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 140ms ease;" style-hover="border-color: var(--m-orange);">{{ k.label }}</div>
+                  </sc-for>
+                </div>
+
+                <sc-if value="{{ needCarrier }}" hint-placeholder-val="{{ false }}">
+                  <div style="position: relative;">
+                    <div onClick="{{ toggleCarrier }}" style="height: 50px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; background: #fff; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: border-color 140ms ease;" style-hover="border-color: var(--m-orange);">
+                      <span style="flex: 1; font-size: 14px; letter-spacing: -0.02em; color: {{ carrierColor }};">{{ carrierLabel }}</span>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate({{ carrierCaret }});"><path d="M6 9.5l6 6 6-6"></path></svg>
+                    </div>
+                    <sc-if value="{{ carrierOpen }}" hint-placeholder-val="{{ false }}">
+                      <div style="position: absolute; top: 100%; left: 0; right: 0; z-index: 21; margin-top: 6px; background: #fff; border: 1px solid var(--m-line-300); border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.16); max-height: 232px; overflow: auto; animation: m-fade-in 140ms ease-out both;">
+                        <sc-for list="{{ carriers }}" as="c" hint-placeholder-count="5">
+                          <div onClick="{{ c.pick }}" style="padding: 13px 14px; border-bottom: 1px solid var(--m-line-200); font-size: 14px; font-weight: 500; color: {{ c.color }}; letter-spacing: -0.02em; cursor: pointer; transition: background 120ms ease;" style-hover="background: var(--m-orange-50);">{{ c.label }}</div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+
+          <div style="margin-top: 18px; font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">문자예시</div>
+          <div style="margin-top: 10px; padding: 16px; background: var(--m-surface-gray); border-radius: 8px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="font-size: 13.5px; line-height: 1.6; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ smsLine1 }}</div>
+            <div style="font-size: 13.5px; line-height: 1.6; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ smsLine2 }}</div>
+            <div style="display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: var(--m-ink-800);">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="#2e2e2e"><path d="M2.5 1.6v8.8L10 6z"></path></svg>
+              {{ smsUrl }}
+            </div>
+          </div>
+        </div>
+
+        <div style="flex: 1; min-height: 24px;"></div>
+
+        <div style="margin: 24px 16px 0; padding: 14px; background: var(--m-orange-50); border-radius: 8px; font-size: 12.5px; line-height: 1.65; color: var(--m-ink-700); letter-spacing: -0.02em;">'안내문자 보내기'를 누르면 입력하신 번호로 상담신청 안내 문자가 작성됩니다. 문자 앱에서 전송 버튼을 눌러주세요.</div>
+
+        <div style="padding: 14px 16px 22px;">
+          <sc-if value="{{ canSend }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ sendSms }}" style="height: 52px; border-radius: 8px; background: var(--m-orange); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 14px rgba(255,111,15,.28); transition: background 140ms ease, transform 140ms ease;" style-hover="background: var(--m-orange-hover); transform: translateY(-1px);" style-active="transform: scale(.99);">안내문자 보내기</div>
+          </sc-if>
+          <sc-if value="{{ cantSend }}" hint-placeholder-val="{{ true }}">
+            <div style="height: 52px; border-radius: 8px; background: var(--m-line-300); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: not-allowed;">안내문자 보내기</div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ contactsOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 20px; right: 20px; bottom: 100px; z-index: 60; background: rgba(46,46,46,.94); color: #fff; border-radius: 10px; padding: 13px 16px; font-size: 13px; line-height: 1.5; letter-spacing: -0.02em; box-shadow: 0 4px 16px rgba(0,0,0,.20); animation: m-fade-in 160ms ease-out both;">기기 연락처 앱에서 고객정보를 선택합니다.<br><span style="color: rgba(255,255,255,.7);">선택한 성명·휴대폰번호가 자동 입력되며 수정할 수 있습니다.</span></div>
+  </sc-if>
+
+  <sc-if value="{{ adFeeOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; z-index: 50; display: flex; flex-direction: column; justify-content: flex-end;">
+      <div onClick="{{ closeAdFee }}" style="position: absolute; inset: 0; background: rgba(0,0,0,.55); animation: m-fade-in 200ms ease-out both;"></div>
+      <div style="position: relative; background: #fff; border-radius: 20px 20px 0 0; padding: 22px 20px 12px; box-shadow: 0 -6px 24px rgba(0,0,0,.16); animation: m-sheet-up 280ms cubic-bezier(.2,0,0,1) both;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h2 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">광고비 안내</h2>
+          <div onClick="{{ closeAdFee }}" style="display: flex; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; gap: 10px;">
+          <div style="flex: 1; padding: 14px 16px; background: var(--m-surface-gray); border-radius: 12px;">
+            <div style="font-size: 12.5px; font-weight: 500; color: var(--m-ink-600); letter-spacing: -0.02em;">비교견적</div>
+            <div style="margin-top: 6px; font-size: 22px; font-weight: 900; color: var(--m-ink-900); letter-spacing: -0.03em; line-height: 1;">3%</div>
+          </div>
+          <div style="flex: 1; padding: 14px 16px; background: var(--m-orange-50); border-radius: 12px;">
+            <div style="font-size: 12.5px; font-weight: 500; color: #a2621a; letter-spacing: -0.02em;">다이렉트</div>
+            <div style="margin-top: 6px; font-size: 22px; font-weight: 900; color: var(--m-orange); letter-spacing: -0.03em; line-height: 1;">5%</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 14px; padding: 14px 16px; background: var(--m-surface-gray); border-radius: 8px; display: flex; flex-direction: column; gap: 9px;">
+          <div style="display: flex; align-items: baseline; gap: 12px;">
+            <span style="flex: none; width: 62px; font-size: 12.5px; color: var(--m-ink-500); letter-spacing: -0.02em;">정산 기준</span>
+            <span style="flex: 1; font-size: 13px; color: var(--m-ink-900); letter-spacing: -0.02em;">보험료의 3% (비교견적) · 5% (다이렉트)</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 12px;">
+            <span style="flex: none; width: 62px; font-size: 12.5px; color: var(--m-ink-500); letter-spacing: -0.02em;">정산 시점</span>
+            <span style="flex: 1; font-size: 13px; color: var(--m-ink-900); letter-spacing: -0.02em;">고객 보험 가입일로부터 영업일 기준 1일 이후</span>
+          </div>
+        </div>
+
+        <ul style="margin: 14px 0 0; padding-left: 16px; font-size: 12px; line-height: 1.75; color: var(--m-ink-500); letter-spacing: -0.02em;">
+          <li>광고비는 고객이 보험에 실제 가입한 건에 대해서만 지급됩니다.</li>
+          <li>가입 철회·취소 시 지급 예정 광고비는 회수됩니다.</li>
+          <li>지급 내역은 <span style="color: var(--m-ink-700); font-weight: 500;">더보기 &gt; 리워드 내역</span>에서 확인할 수 있습니다.</li>
+        </ul>
+
+        <div onClick="{{ closeAdFee }}" style="margin: 18px 0 8px; height: 52px; border-radius: 999px; background: var(--m-orange); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-orange-hover);">확인</div>
+        <div style="display: flex; justify-content: center; padding: 6px 0 8px;"><span style="width: 128px; height: 4px; border-radius: 999px; background: #2e2e2e;"></span></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ smsToast }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 20px; right: 20px; bottom: 100px; z-index: 60; background: rgba(46,46,46,.94); color: #fff; border-radius: 10px; padding: 13px 16px; font-size: 13px; line-height: 1.5; letter-spacing: -0.02em; box-shadow: 0 4px 16px rgba(0,0,0,.20); animation: m-fade-in 160ms ease-out both;">문자 앱을 실행합니다 · 수신인 {{ custPhone }}<br><span style="color: rgba(255,255,255,.7);">안내문자 내용이 자동 입력됩니다. (고객정보는 저장되지 않습니다)</span></div>
+  </sc-if>
+
+  <sc-if value="{{ isUse }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #fff; min-height: 812px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #fff; border-bottom: 1px solid var(--m-line-200);">
+      <div onClick="{{ goBack }}" style="display: flex; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <h1 style="flex: 1; margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">사용현황</h1>
+    </div>
+
+    <div style="padding: 16px;">
+      <div style="background: var(--m-surface-gray); border-radius: 12px; padding: 16px;">
+        <div style="font-size: 12.5px; color: var(--m-ink-600); letter-spacing: -0.02em;">사용 가능한 이용권</div>
+        <div style="margin-top: 6px; display: flex; align-items: baseline; gap: 3px;">
+          <span style="font-size: 30px; font-weight: 900; color: var(--m-ink-900); letter-spacing: -0.04em; line-height: 1;">{{ availNum }}</span>
+          <span style="font-size: 14px; font-weight: 500; color: var(--m-ink-700);">건</span>
+        </div>
+        <div style="margin-top: 14px; display: flex; align-items: center; gap: 14px;">
+          <span style="display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--m-ink-600); letter-spacing: -0.02em;"><span style="width: 8px; height: 8px; border-radius: 2px; background: var(--m-orange);"></span>사용 가능 <span style="font-weight: 700; color: var(--m-ink-900);">{{ availLabel }}</span></span>
+          <span style="display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--m-ink-600); letter-spacing: -0.02em;"><span style="width: 8px; height: 8px; border-radius: 2px; background: #d9dde1;"></span>사용 중 <span style="font-weight: 700; color: var(--m-ink-900);">5건</span></span>
+        </div>
+        <div style="margin-top: 10px; display: flex; height: 18px; border-radius: 3px; overflow: hidden; background: #e3e7ea;">
+          <span style="width: 93%; background: var(--m-orange);"></span>
+        </div>
+        <div style="margin-top: 7px; display: flex; justify-content: space-between; font-size: 10.5px; color: var(--m-ink-400);">
+          <span>0건</span><span>{{ ownedLabel }}</span>
+        </div>
+        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--m-line-200); font-size: 11.5px; line-height: 1.6; color: var(--m-ink-500); letter-spacing: -0.02em;">전자계약 매입 1건 · 매도 2건, 이전 5건이 차감됩니다.</div>
+      </div>
+    </div>
+
+    <div style="height: 8px; background: var(--m-surface-gray);"></div>
+
+    <div style="padding: 18px 16px 0;">
+      <div style="display: flex; padding: 4px; background: var(--m-surface-gray); border-radius: 999px;">
+        <sc-for list="{{ useTabs }}" as="t" hint-placeholder-count="2">
+          <div onClick="{{ t.go }}" style="flex: 1; height: 36px; border-radius: 999px; background: {{ t.bg }}; box-shadow: {{ t.shadow }}; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: {{ t.weight }}; color: {{ t.color }}; letter-spacing: -0.02em; cursor: pointer; transition: all 160ms cubic-bezier(.2,0,0,1);">{{ t.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 14px; padding: 16px 0 14px; border-bottom: 1px solid var(--m-line-200);">
+      <div onClick="{{ prevPeriod }}" style="display: flex; cursor: pointer;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <span style="font-size: 14.5px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ periodLabel }}</span>
+      <div onClick="{{ nextPeriod }}" style="display: flex; cursor: pointer;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 6px; padding: 14px 16px 6px;">
+      <sc-for list="{{ useChips }}" as="c" hint-placeholder-count="3">
+        <div onClick="{{ c.go }}" style="height: 26px; padding: 0 11px; border-radius: 999px; border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; font-size: 11.5px; font-weight: 500; letter-spacing: -0.02em; display: flex; align-items: center; cursor: pointer; transition: all 140ms ease;">{{ c.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column;">
+      <sc-for list="{{ useDays }}" as="d" hint-placeholder-count="3">
+        <div style="padding: 12px 16px 0; border-top: 1px solid var(--m-line-200);">
+          <div style="font-size: 11.5px; color: var(--m-ink-400); letter-spacing: -0.02em;">{{ d.date }}</div>
+          <sc-for list="{{ d.groups }}" as="g" hint-placeholder-count="2">
+            <div>
+              <div onClick="{{ g.toggle }}" style="display: flex; align-items: center; gap: 8px; padding: 11px 0; cursor: pointer;">
+                <span style="width: 3px; height: 15px; border-radius: 2px; background: {{ g.barColor }};"></span>
+                <span style="flex: 1; font-size: 14.5px; font-weight: 700; color: {{ g.textColor }}; letter-spacing: -0.02em;">{{ g.kind }}</span>
+                <span style="font-size: 13px; font-weight: 500; color: var(--m-ink-700); letter-spacing: -0.02em;">{{ g.count }}</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate({{ g.caret }});"><path d="M6 9.5l6 6 6-6"></path></svg>
+              </div>
+              <sc-if value="{{ g.open }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-direction: column;">
+                  <sc-for list="{{ g.rows }}" as="row" hint-placeholder-count="2">
+                    <div style="padding: 11px 0 12px; border-top: 1px solid var(--m-line-200);">
+                      <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 13.5px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ row.type }}</span>
+                        <sc-if value="{{ row.hasBadge }}" hint-placeholder-val="{{ false }}">
+                          <span style="height: 17px; padding: 0 5px; border-radius: 4px; background: #ffe9d9; color: var(--m-orange); font-size: 10px; font-weight: 700; display: inline-flex; align-items: center; letter-spacing: -0.02em;">{{ row.badge }}</span>
+                        </sc-if>
+                        <span style="flex: 1;"></span>
+                        <span style="font-size: 12.5px; font-weight: 700; color: var(--m-ink-800);">{{ row.count }}</span>
+                      </div>
+                      <div style="margin-top: 5px; display: flex; align-items: center; gap: 8px;">
+                        <span style="flex: 1; min-width: 0; font-size: 11.5px; color: var(--m-ink-500); letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ row.plate }} <span style="color: var(--m-line-300);">|</span> {{ row.model }}</span>
+                        <span style="flex: none; font-size: 10.5px; color: var(--m-ink-400);">{{ row.time }}</span>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+      <div style="border-top: 1px solid var(--m-line-200); min-height: 40px;"></div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isPay }}" hint-placeholder-val="{{ false }}">
+  <div style="background: var(--m-surface-gray); min-height: 812px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: #fff; border-bottom: 1px solid var(--m-line-200);">
+      <div onClick="{{ goBack }}" style="display: flex; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <h1 style="flex: 1; margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">결제 내역</h1>
+    </div>
+
+    <div style="padding: 14px 16px; background: #fff;">
+      <div onClick="{{ openStatus }}" style="height: 48px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; background: #fff; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: border-color 140ms ease;" style-hover="border-color: var(--m-orange);">
+        <span style="flex: 1; font-size: 14px; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ statusLabel }}</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5l6 6 6-6"></path></svg>
+      </div>
+    </div>
+
+    <div style="flex: 1; padding: 14px 16px 20px; display: flex; flex-direction: column; gap: 12px;">
+      <sc-for list="{{ payRows }}" as="r" hint-placeholder-count="4">
+        <div style="background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.06); padding: 16px 16px 14px; cursor: pointer; transition: box-shadow 140ms ease, transform 140ms ease;" style-hover="box-shadow: 0 4px 14px rgba(0,0,0,.10); transform: translateY(-1px);">
+          <div style="display: flex; align-items: baseline; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid var(--m-line-200);">
+            <span style="font-size: 15px; font-weight: 700; color: {{ r.statusColor }}; letter-spacing: -0.02em;">{{ r.status }}</span>
+            <span style="flex: 1; font-size: 12px; color: var(--m-ink-400); letter-spacing: -0.01em;">{{ r.no }}</span>
+            <span style="font-size: 16px; font-weight: 700; color: {{ r.amountColor }}; text-decoration: {{ r.amountLine }}; letter-spacing: -0.02em;">{{ r.amount }}</span>
+          </div>
+          <div style="padding-top: 12px; display: flex; flex-direction: column; gap: 5px;">
+            <div style="font-size: 13.5px; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ r.item }} <span style="color: var(--m-ink-500);">{{ r.breakdown }}</span></div>
+            <sc-if value="{{ r.hasItem2 }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size: 13.5px; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ r.item2 }} <span style="color: var(--m-ink-500);">{{ r.breakdown2 }}</span></div>
+            </sc-if>
+            <div style="font-size: 13.5px; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ r.method }} <span style="color: var(--m-ink-500);">{{ r.methodNote }}</span></div>
+            <sc-if value="{{ r.hasFail }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size: 13.5px; letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span style="font-weight: 700; color: var(--m-red);">환불실패</span> <span style="color: var(--m-ink-500);">{{ r.failNote }}</span></div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+
+      <sc-if value="{{ payEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="flex: 1; min-height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c3c3c3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="6.5" width="14" height="11" rx="2"></rect><path d="M5.8 10.5h5M5.8 13.5h3"></path><ellipse cx="18" cy="12" rx="3.2" ry="4.2"></ellipse></svg>
+          <span style="font-size: 13.5px; color: var(--m-ink-400); letter-spacing: -0.02em;">결제 내역이 없습니다.</span>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="position: sticky; bottom: 0; display: flex; align-items: center; padding: 12px 20px 16px; background: #fff; border-top: 1px solid var(--m-line-200);">
+      <span style="flex: 1; font-size: 12.5px; color: var(--m-ink-500); letter-spacing: -0.02em;">총 {{ payTotal }}</span>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 6.5 7.5 12l5.5 5.5M18 6.5 12.5 12l5.5 5.5"></path></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6.5 9.5 12l5.5 5.5"></path></svg>
+        <sc-for list="{{ pages }}" as="pg" hint-placeholder-count="3">
+          <span onClick="{{ pg.go }}" style="min-width: 18px; text-align: center; font-size: 13.5px; font-weight: {{ pg.weight }}; color: {{ pg.color }}; cursor: pointer;">{{ pg.n }}</span>
+        </sc-for>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6.5 15 12l-5.5 5.5"></path></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6.5 11.5 12 6 17.5M11 6.5 16.5 12 11 17.5"></path></svg>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ statusSheet }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; z-index: 45; display: flex; flex-direction: column; justify-content: flex-end;">
+      <div onClick="{{ closeStatus }}" style="position: absolute; inset: 0; background: rgba(0,0,0,.55); animation: m-fade-in 200ms ease-out both;"></div>
+      <div style="position: relative; background: #fff; border-radius: 20px 20px 0 0; padding: 22px 20px 12px; box-shadow: 0 -6px 24px rgba(0,0,0,.16); animation: m-sheet-up 280ms cubic-bezier(.2,0,0,1) both;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h2 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">상태 선택</h2>
+          <div onClick="{{ closeStatus }}" style="display: flex; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+          </div>
+        </div>
+        <div style="margin-top: 18px; display: flex; flex-direction: column;">
+          <sc-for list="{{ statusOpts }}" as="s" hint-placeholder-count="6">
+            <div onClick="{{ s.toggle }}" style="display: flex; align-items: center; gap: 12px; padding: 11px 0; cursor: pointer;">
+              <span style="flex: none; width: 20px; height: 20px; border-radius: 4px; background: {{ s.boxBg }}; border: 1.6px solid {{ s.boxBorder }}; display: flex; align-items: center; justify-content: center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>
+              </span>
+              <span style="font-size: 14.5px; font-weight: 500; color: {{ s.textColor }}; letter-spacing: -0.02em;">{{ s.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div onClick="{{ applyStatus }}" style="margin: 18px 0 8px; height: 52px; border-radius: 999px; background: var(--m-orange); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-orange-hover);">확인</div>
+        <div style="display: flex; justify-content: center; padding: 6px 0 8px;"><span style="width: 128px; height: 4px; border-radius: 999px; background: #2e2e2e;"></span></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isBuy }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #ffffff; min-height: 780px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 16px 14px; background: #ffffff;">
+      <div onClick="{{ goBack }}" style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 8px;" style-hover="background: var(--m-surface-gray);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <h1 style="flex: 1; margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">이용권 구매</h1>
+    </div>
+
+    <div style="padding: 10px 20px 0;">
+      <div style="font-size: 19px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.03em; line-height: 1.4;">구매할 이용권을 선택해주세요.</div>
+      <div style="margin-top: 6px; font-size: 12.5px; color: var(--m-ink-500); letter-spacing: -0.02em;">1건당 1,100원(부가세 포함) · 최소 10건부터 구매할 수 있습니다.</div>
+    </div>
+
+    <div style="padding: 22px 20px 0; display: flex; flex-direction: column; gap: 18px;">
+
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 13px; font-weight: 700; color: var(--m-ink-800); letter-spacing: -0.02em;">구매 수량</span>
+          <span style="font-size: 11.5px; color: var(--m-ink-400); letter-spacing: -0.02em;">잔여 {{ availLabel }}</span>
+        </div>
+        <div style="height: 52px; padding: 0 6px 0 14px; border: 1px solid {{ qtyBorder }}; border-radius: 8px; background: #fff; display: flex; align-items: center; gap: 8px; transition: border-color 140ms ease;">
+          <input value="{{ qtyVal }}" onChange="{{ onQty }}" placeholder="수량입력" inputmode="numeric" style="flex: 1; min-width: 0; height: 48px; border: none; outline: none; background: transparent; font-family: inherit; font-size: 14px; font-weight: 400; color: var(--m-ink-900); letter-spacing: -0.02em">
+          <span style="font-size: 14px; font-weight: 500; color: var(--m-ink-500);">건</span>
+          <div style="display: flex; align-items: center; gap: 4px; padding-left: 6px;">
+            <div onClick="{{ dec }}" style="width: 38px; height: 38px; border-radius: 8px; background: {{ decBg }}; display: flex; align-items: center; justify-content: center; cursor: {{ decCursor }}; transition: background 140ms ease;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ decColor }}" stroke-width="2.2" stroke-linecap="round"><path d="M5.5 12h13"></path></svg>
+            </div>
+            <div onClick="{{ inc }}" style="width: 38px; height: 38px; border-radius: 8px; background: var(--m-orange-50); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 140ms ease;" style-hover="background: #ffe3cf;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6f0f" stroke-width="2.2" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"></path></svg>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 10px; display: flex; gap: 8px;">
+          <sc-for list="{{ quicks }}" as="q" hint-placeholder-count="4">
+            <div onClick="{{ q.go }}" style="flex: 1; height: 38px; border-radius: 999px; border: 1px solid {{ q.border }}; background: {{ q.bg }}; color: {{ q.color }}; font-size: 13.5px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 140ms ease;">{{ q.label }}</div>
+          </sc-for>
+        </div>
+        <div style="margin-top: 9px; font-size: 11.5px; color: {{ hintColor }}; letter-spacing: -0.02em;">{{ qtyHint }}</div>
+      </div>
+
+      <div style="display: none;">
+        <div onClick="{{ toggleDoc }}" style="height: 48px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; background: #fff; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: border-color 140ms ease;" style-hover="border-color: var(--m-orange);">
+          <span style="flex: 1; font-size: 14px; letter-spacing: -0.02em; color: {{ docTextColor }};">{{ docLabel }}</span>
+          <sc-if value="{{ docPicked }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ clearDoc }}" style="flex: none; width: 20px; height: 20px; margin-right: 2px; border-radius: 999px; background: var(--m-surface-gray); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 140ms ease;" style-hover="background: #ffe3cf;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+            </div>
+          </sc-if>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate({{ docCaret }});"><path d="M6 9.5l6 6 6-6"></path></svg>
+        </div>
+        <sc-if value="{{ docOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; top: 100%; left: 0; right: 0; z-index: 20; margin-top: 6px; background: #fff; border: 1px solid var(--m-line-300); border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.16); overflow: hidden; animation: m-fade-in 140ms ease-out both;">
+            <sc-for list="{{ docPacks }}" as="p" hint-placeholder-count="4">
+              <div onClick="{{ p.pick }}" style="display: flex; align-items: center; gap: 10px; padding: 13px 14px; border-bottom: 1px solid var(--m-line-200); cursor: pointer; transition: background 120ms ease;" style-hover="background: var(--m-orange-50);">
+                <span style="width: 88px; flex: none; font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ p.price }}</span>
+                <span style="width: 58px; flex: none; font-size: 13.5px; font-weight: 500; color: var(--m-ink-800); letter-spacing: -0.02em; white-space: nowrap;">{{ p.count }}</span>
+                <sc-if value="{{ p.hasBonus }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size: 12px; color: var(--m-ink-400); letter-spacing: -0.02em; white-space: nowrap;">({{ p.base }} <span style="color: var(--m-green); font-weight: 700;">{{ p.bonus }}</span>)</span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="display: none;">
+        <div onClick="{{ toggleTr }}" style="height: 48px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; background: #fff; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: border-color 140ms ease;" style-hover="border-color: var(--m-orange);">
+          <span style="flex: 1; font-size: 14px; letter-spacing: -0.02em; color: {{ trTextColor }};">{{ trLabel }}</span>
+          <sc-if value="{{ trPicked }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ clearTr }}" style="flex: none; width: 20px; height: 20px; margin-right: 2px; border-radius: 999px; background: var(--m-surface-gray); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 140ms ease;" style-hover="background: #ffe3cf;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+            </div>
+          </sc-if>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate({{ trCaret }});"><path d="M6 9.5l6 6 6-6"></path></svg>
+        </div>
+        <sc-if value="{{ trOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; top: 100%; left: 0; right: 0; z-index: 20; margin-top: 6px; background: #fff; border: 1px solid var(--m-line-300); border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.16); overflow: hidden; animation: m-fade-in 140ms ease-out both;">
+            <sc-for list="{{ trPacks }}" as="p" hint-placeholder-count="4">
+              <div onClick="{{ p.pick }}" style="display: flex; align-items: center; gap: 10px; padding: 13px 14px; border-bottom: 1px solid var(--m-line-200); cursor: pointer; transition: background 120ms ease;" style-hover="background: var(--m-orange-50);">
+                <span style="width: 88px; flex: none; font-size: 14px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ p.price }}</span>
+                <span style="width: 58px; flex: none; font-size: 13.5px; font-weight: 500; color: var(--m-ink-800); letter-spacing: -0.02em; white-space: nowrap;">{{ p.count }}</span>
+                <sc-if value="{{ p.hasBonus }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size: 12px; color: var(--m-ink-400); letter-spacing: -0.02em; white-space: nowrap;">({{ p.base }} <span style="color: var(--m-green); font-weight: 700;">{{ p.bonus }}</span>)</span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <sc-if value="{{ hasPick }}" hint-placeholder-val="{{ false }}">
+      
+    </sc-if>
+
+    <div style="margin: 24px 20px 0; padding: 16px 16px 18px; background: var(--m-surface-gray); border-radius: 12px;">
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555b63" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><circle cx="12" cy="7.8" r="0.4" fill="currentColor" stroke="currentColor"></circle></svg>
+        <span style="font-size: 13px; font-weight: 700; color: var(--m-ink-800); letter-spacing: -0.02em;">이용권 차감 안내</span>
+      </div>
+      <div style="margin-top: 10px; font-size: 12px; line-height: 1.7; color: var(--m-ink-600); letter-spacing: -0.02em;">전자계약과 온라인이전 서비스 이용을 위한 이용권으로 각 서비스별 차감 안내사항은 아래와 같습니다.</div>
+      <div style="margin-top: 12px; font-size: 12px; font-weight: 700; color: var(--m-ink-700); letter-spacing: -0.02em;">전자계약</div>
+      <ul style="margin: 5px 0 0; padding-left: 16px; font-size: 11.5px; line-height: 1.75; color: var(--m-ink-500); letter-spacing: -0.02em;">
+        <li>계약 시작 시 이용권이 사용되며 해당 이용권은 다른 계약에 사용할 수 없습니다.</li>
+        <li>계약 완료 시 이용권이 차감되며, 취소 시 복원됩니다.</li>
+        <li>이용권은 매입 1건, 매도 2건 차감됩니다.</li>
+        <li>단, 매도 시 성능점검기록부가 없는 경우 1건만 차감됩니다.</li>
+      </ul>
+      <div style="margin-top: 14px; font-size: 12px; font-weight: 700; color: var(--m-ink-700); letter-spacing: -0.02em;">이전</div>
+      <ul style="margin: 5px 0 0; padding-left: 16px; font-size: 11.5px; line-height: 1.75; color: var(--m-ink-500); letter-spacing: -0.02em;">
+        <li>이전 신청 시 이용권이 사용되며 해당 이용권은 다른 계약에 사용할 수 없습니다.</li>
+        <li>이전 완료 시 이용권이 차감되며, 취소나 불가 시 복원됩니다.</li>
+        <li>이용권은 5건 차감됩니다.</li>
+      </ul>
+    </div>
+
+    <div style="flex: 1; min-height: 28px;"></div>
+
+    <div style="position: sticky; bottom: 0; background: #fff; box-shadow: 0 -2px 12px rgba(0,0,0,.06);">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: var(--m-orange-50);">
+        <span style="font-size: 14px; font-weight: 500; color: var(--m-ink-800); letter-spacing: -0.02em;">합계</span>
+        <span style="font-size: 20px; font-weight: 900; color: {{ totalColor }}; letter-spacing: -0.03em;">{{ totalText }}</span>
+      </div>
+      <div style="padding: 12px 16px 22px;">
+        <sc-if value="{{ hasPick }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ pay }}" style="height: 52px; border-radius: 10px; background: var(--m-orange); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 14px rgba(255,111,15,.28); transition: background 140ms ease, transform 140ms ease;" style-hover="background: var(--m-orange-hover); transform: translateY(-1px);" style-active="transform: scale(.99);">결제하기</div>
+        </sc-if>
+        <sc-if value="{{ noPick }}" hint-placeholder-val="{{ true }}">
+          <div style="height: 52px; border-radius: 10px; background: var(--m-line-300); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: not-allowed;">결제하기</div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ selectOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeSelects }}" style="position: absolute; inset: 0; z-index: 15;"></div>
+  </sc-if>
+
+  <sc-if value="{{ payToast }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 20px; right: 20px; bottom: 110px; z-index: 60; background: rgba(46,46,46,.94); color: #fff; border-radius: 10px; padding: 13px 16px; font-size: 13px; letter-spacing: -0.02em; box-shadow: 0 4px 16px rgba(0,0,0,.20); animation: m-fade-in 160ms ease-out both;">결제 페이지(PG)로 이동합니다 · {{ totalText }}</div>
+  </sc-if>
+
+  <sc-if value="{{ tipOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeTip }}" style="position: absolute; inset: 0; z-index: 25;"></div>
+  </sc-if>
+
+  <sc-if value="{{ isNotice }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #fff; min-height: 812px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #fff; border-bottom: 1px solid var(--m-line-200);">
+      <div onClick="{{ noticeBack }}" style="display: flex; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <h1 style="flex: 1; margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">공지사항</h1>
+    </div>
+
+    <sc-if value="{{ noticeList }}" hint-placeholder-val="{{ true }}">
+      <div style="flex: 1; display: flex; flex-direction: column;">
+        <sc-for list="{{ notices }}" as="n" hint-placeholder-count="6">
+          <div onClick="{{ n.open }}" style="padding: 15px 20px; border-bottom: 1px solid var(--m-line-200); cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <sc-if value="{{ n.pinned }}" hint-placeholder-val="{{ false }}">
+                <span style="height: 19px; padding: 0 6px; border-radius: 4px; background: #ffe9d9; color: var(--m-orange); font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; letter-spacing: -0.02em;">중요</span>
+              </sc-if>
+              <span style="font-size: 11.5px; color: var(--m-ink-400); letter-spacing: -0.02em;">{{ n.cat }}</span>
+            </div>
+            <div style="margin-top: 5px; display: flex; align-items: center; gap: 10px;">
+              <span style="flex: 1; min-width: 0; font-size: 14.5px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ n.title }}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c3c3c3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: var(--m-ink-400); letter-spacing: -0.02em;">{{ n.date }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ noticeView }}" hint-placeholder-val="{{ false }}">
+      <div style="flex: 1; display: flex; flex-direction: column;">
+        <div style="padding: 20px 20px 16px; border-bottom: 1px solid var(--m-line-200);">
+          <span style="font-size: 11.5px; color: var(--m-ink-400); letter-spacing: -0.02em;">{{ nvCat }}</span>
+          <h2 style="margin: 6px 0 0; font-size: 17px; font-weight: 700; line-height: 1.45; color: var(--m-ink-900); letter-spacing: -0.03em; text-wrap: pretty;">{{ nvTitle }}</h2>
+          <div style="margin-top: 8px; font-size: 12px; color: var(--m-ink-400); letter-spacing: -0.02em;">{{ nvDate }}</div>
+        </div>
+        <div style="flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+          <sc-for list="{{ nvBody }}" as="p" hint-placeholder-count="3">
+            <p style="margin: 0; font-size: 14px; line-height: 1.75; color: var(--m-ink-800); letter-spacing: -0.02em; text-wrap: pretty;">{{ p.text }}</p>
+          </sc-for>
+        </div>
+        <div style="padding: 12px 20px 20px; border-top: 1px solid var(--m-line-200);">
+          <div onClick="{{ noticeToList }}" style="height: 48px; border-radius: 8px; border: 1px solid var(--m-line-300); color: var(--m-ink-800); font-size: 15px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 140ms ease;" style-hover="border-color: var(--m-orange); color: var(--m-orange);">목록으로</div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isCs }}" hint-placeholder-val="{{ false }}">
+  <div style="background: var(--m-surface-gray); min-height: 812px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #fff; border-bottom: 1px solid var(--m-line-200);">
+      <div onClick="{{ csBack }}" style="display: flex; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
+      </div>
+      <h1 style="flex: 1; margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">{{ csTitle }}</h1>
+    </div>
+
+    <sc-if value="{{ csList }}" hint-placeholder-val="{{ true }}">
+      <div style="flex: 1; display: flex; flex-direction: column;">
+        <div style="padding: 16px 20px 18px; background: #fff; display: flex; align-items: center; gap: 14px;">
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 12.5px; color: var(--m-ink-500); letter-spacing: -0.02em;">고객센터</div>
+            <div style="margin-top: 3px; font-size: 20px; font-weight: 900; color: var(--m-ink-900); letter-spacing: -0.03em;">1566-3639</div>
+            <div style="margin-top: 4px; font-size: 12px; color: var(--m-ink-400); letter-spacing: -0.02em;">평일 09:30 ~ 17:00 (점심 12:30 ~ 13:30)</div>
+          </div>
+          <div style="flex: none; height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--m-line-300); display: flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 500; color: var(--m-ink-800); letter-spacing: -0.02em; cursor: pointer; transition: all 140ms ease;" style-hover="border-color: var(--m-orange); color: var(--m-orange);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h3.4l1.6 4-2.1 1.4a11 11 0 0 0 5.2 5.2l1.4-2.1 4 1.6V18a1.5 1.5 0 0 1-1.6 1.5C9.7 19 5 14.3 4.5 6.1A1.5 1.5 0 0 1 5 4.5z"></path></svg>
+            전화
+          </div>
+        </div>
+
+        <div style="height: 8px; background: var(--m-surface-gray);"></div>
+
+        <div style="padding: 16px 20px 10px; background: #fff; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+          <span style="font-size: 15px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">문의내역</span>
+          <div onClick="{{ csNew }}" style="height: 36px; padding: 0 15px; border-radius: 999px; background: var(--m-orange); color: #fff; font-size: 13.5px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 5px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-orange-hover);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+            문의하기
+          </div>
+        </div>
+
+        <div style="flex: 1; padding: 6px 16px 20px; background: #fff; display: flex; flex-direction: column;">
+          <sc-for list="{{ inquiries }}" as="q" hint-placeholder-count="3">
+            <div onClick="{{ q.toggle }}" style="padding: 14px 4px; border-bottom: 1px solid var(--m-line-200); cursor: pointer;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="height: 20px; padding: 0 7px; border-radius: 4px; background: {{ q.badgeBg }}; color: {{ q.badgeColor }}; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; letter-spacing: -0.02em;">{{ q.status }}</span>
+                <span style="font-size: 11.5px; color: var(--m-ink-400); letter-spacing: -0.02em;">{{ q.cat }}</span>
+                <span style="flex: 1;"></span>
+                <span style="font-size: 11.5px; color: var(--m-ink-400); letter-spacing: -0.02em;">{{ q.date }}</span>
+              </div>
+              <div style="margin-top: 6px; font-size: 14.5px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ q.title }}</div>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+                  <div style="padding: 13px 14px; background: var(--m-surface-gray); border-radius: 10px; font-size: 13.5px; line-height: 1.7; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ q.body }}</div>
+                  <sc-if value="{{ q.answered }}" hint-placeholder-val="{{ false }}">
+                    <div style="padding: 13px 14px; background: #fff8f2; border: 1px solid #ffe0c7; border-radius: 10px;">
+                      <div style="font-size: 11.5px; font-weight: 700; color: var(--m-orange); letter-spacing: -0.02em;">답변 · {{ q.answeredAt }}</div>
+                      <div style="margin-top: 6px; font-size: 13.5px; line-height: 1.7; color: var(--m-ink-800); letter-spacing: -0.02em;">{{ q.answer }}</div>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ csForm }}" hint-placeholder-val="{{ false }}">
+      <div style="flex: 1; display: flex; flex-direction: column; background: #fff;">
+        <div style="padding: 18px 16px 0; display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--m-ink-800); letter-spacing: -0.02em;"><span style="color: var(--m-orange);">*</span> 문의 유형</div>
+            <div style="margin-top: 8px; position: relative;">
+              <div onClick="{{ toggleQType }}" style="height: 50px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; background: #fff; display: flex; align-items: center; gap: 8px; cursor: pointer;" style-hover="border-color: var(--m-orange);">
+                <span style="flex: 1; font-size: 14px; letter-spacing: -0.02em; color: {{ qTypeColor }};">{{ qTypeLabel }}</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate({{ qTypeCaret }});"><path d="M6 9.5l6 6 6-6"></path></svg>
+              </div>
+              <sc-if value="{{ qTypeOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position: absolute; top: 100%; left: 0; right: 0; z-index: 20; margin-top: 6px; background: #fff; border: 1px solid var(--m-line-300); border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.16); overflow: hidden;">
+                  <sc-for list="{{ qTypes }}" as="t" hint-placeholder-count="4">
+                    <div onClick="{{ t.pick }}" style="padding: 13px 14px; font-size: 14px; color: var(--m-ink-900); letter-spacing: -0.02em; cursor: pointer; border-bottom: 1px solid var(--m-line-200);" style-hover="background: var(--m-surface-gray);">{{ t.label }}</div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--m-ink-800); letter-spacing: -0.02em;"><span style="color: var(--m-orange);">*</span> 제목</div>
+            <input value="{{ qTitleVal }}" onChange="{{ onQTitle }}" placeholder="제목을 입력하세요" style="margin-top: 8px; width: 100%; box-sizing: border-box; height: 50px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; font-family: inherit; font-size: 14px; color: var(--m-ink-900); letter-spacing: -0.02em; outline: none; background: #fff;" style-focus="border-color: var(--m-orange);">
+          </div>
+
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--m-ink-800); letter-spacing: -0.02em;"><span style="color: var(--m-orange);">*</span> 문의 내용</div>
+            <div style="margin-top: 8px; position: relative;">
+              <textarea value="{{ qBodyVal }}" onChange="{{ onQBody }}" placeholder="문의하실 내용을 자세히 적어주세요." style="width: 100%; box-sizing: border-box; height: 150px; padding: 13px 14px 28px; border: 1px solid var(--m-line-300); border-radius: 8px; font-family: inherit; font-size: 14px; line-height: 1.6; color: var(--m-ink-900); letter-spacing: -0.02em; outline: none; resize: none; background: #fff;" style-focus="border-color: var(--m-orange);"></textarea>
+              <span style="position: absolute; right: 12px; bottom: 12px; font-size: 11.5px; color: var(--m-ink-400);">{{ qBodyCount }}/300자</span>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--m-ink-800); letter-spacing: -0.02em;">답변 받을 연락처</div>
+            <input value="{{ qPhoneVal }}" onChange="{{ onQPhone }}" placeholder="휴대폰번호 입력" inputmode="tel" style="margin-top: 8px; width: 100%; box-sizing: border-box; height: 50px; padding: 0 14px; border: 1px solid var(--m-line-300); border-radius: 8px; font-family: inherit; font-size: 14px; color: var(--m-ink-900); letter-spacing: -0.02em; outline: none; background: #fff;" style-focus="border-color: var(--m-orange);">
+          </div>
+        </div>
+
+        <div style="flex: 1;"></div>
+        <div style="padding: 14px 16px 22px; background: #fff;">
+          <sc-if value="{{ canSubmitQ }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ submitQ }}" style="height: 52px; border-radius: 8px; background: var(--m-orange); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-orange-hover);">문의 등록</div>
+          </sc-if>
+          <sc-if value="{{ cantSubmitQ }}" hint-placeholder-val="{{ true }}">
+            <div style="height: 52px; border-radius: 8px; background: var(--m-line-300); color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; justify-content: center;">문의 등록</div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ csToast }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 20px; right: 20px; bottom: 100px; z-index: 60; background: rgba(46,46,46,.94); color: #fff; border-radius: 10px; padding: 13px 16px; font-size: 13px; line-height: 1.5; letter-spacing: -0.02em; animation: m-fade-in 180ms ease-out both;">문의가 등록되었습니다. 답변은 영업일 기준 1일 이내 등록됩니다.</div>
+  </sc-if>
+
+  <sc-if value="{{ isMore }}" hint-placeholder-val="{{ false }}">
+    <div style="position: relative; z-index: 35; background: #fff; min-height: 800px; animation: m-sheet-up 280ms cubic-bezier(.2,0,0,1) both;">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 20px 8px;">
+        <h1 style="margin: 0; font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">더보기</h1>
+        <div onClick="{{ goHome }}" style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 8px;" style-hover="background: var(--m-surface-gray);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e2e2e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+        </div>
+      </div>
+
+      <div style="position: relative; z-index: 1; background: var(--m-orange-50); padding: 20px 20px 20px; margin-top: 4px; overflow: hidden; box-shadow: 0 4px 14px rgba(46,46,46,.10);">
+        <div style="position: absolute; top: -46px; right: -34px; width: 150px; height: 150px; border-radius: 999px; background: #ffe3cf; opacity: .55;"></div>
+        <div style="position: relative; display: flex; align-items: center; gap: 12px;">
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 21px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.03em; line-height: 1.2;">김딜러 <span style="font-weight: 500; color: var(--m-ink-600);">님</span></div>
+            <div style="margin-top: 4px; display: flex; align-items: center; gap: 6px;">
+              
+              <span style="font-size: 12px; color: var(--m-ink-500); letter-spacing: -0.02em;">오토카모터스</span>
+            </div>
+          </div>
+          <div style="flex: none; display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 13px; background: #fff; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.08); cursor: pointer; transition: transform 140ms ease, box-shadow 140ms ease;" style-hover="transform: translateY(-1px); box-shadow: 0 5px 14px rgba(0,0,0,.12);">
+            <span style="display: flex; align-items: center; justify-content: center; width: 20px; height: 14px; border-radius: 4px; background: var(--m-orange);">
+              <svg width="8" height="8" viewBox="0 0 10 10" fill="#fff"><path d="M2 1.4v7.2l6.2-3.6z"></path></svg>
+            </span>
+            <span style="font-size: 12.5px; font-weight: 500; color: var(--m-ink-800); letter-spacing: -0.03em;">영상가이드</span>
+          </div>
+        </div>
+
+      <div onClick="{{ goUse }}" style="margin-top: 14px; position: relative; display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 6px 0 14px; background: rgba(255,255,255,.72); border-radius: 999px; cursor: pointer; transition: background 140ms ease;" style-hover="background: #fff;">
+        <span style="font-size: 12.5px; color: var(--m-ink-600); letter-spacing: -0.02em;">이용권</span>
+        <span style="display: flex; align-items: baseline; gap: 1px;"><span style="font-size: 15px; font-weight: 900; color: var(--m-ink-900); letter-spacing: -0.03em;">{{ availNum }}</span><span style="font-size: 12px; font-weight: 700; color: var(--m-ink-900);">건</span></span>
+        <span style="width: 1px; height: 11px; background: #dadada;"></span>
+        <span style="font-size: 12px; color: var(--m-ink-400); letter-spacing: -0.02em;">사용 중 5건</span>
+        <span style="flex: 1;"></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+      </div>
+      </div>
+
+      <div style="padding: 22px 0 8px;">
+        <div style="padding: 0 20px 4px; font-size: 12px; font-weight: 700; color: var(--m-ink-400); letter-spacing: -0.02em;">문서함</div>
+        <div style="display: flex; align-items: center; gap: 14px; padding: 13px 20px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5A2 2 0 0 1 5.5 5.5h3.2l1.6 2h8.2a2 2 0 0 1 2 2v7.2a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2V7.5z"></path></svg>
+          <span style="flex: 1; font-size: 15px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">진행 중 문서함</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; padding: 13px 20px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5A2 2 0 0 1 5.5 5.5h3.2l1.6 2h8.2a2 2 0 0 1 2 2v7.2a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2V7.5z"></path><path d="M9.2 13.6l2.3 2.3 4.2-4.6"></path></svg>
+          <span style="flex: 1; font-size: 15px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">완료 문서함</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+      </div>
+
+      <div style="padding: 14px 0 8px;">
+        <div style="padding: 0 20px 4px; font-size: 12px; font-weight: 700; color: var(--m-ink-400); letter-spacing: -0.02em;">설정</div>
+        <div style="display: flex; align-items: center; gap: 14px; padding: 13px 20px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="10" r="2.6"></circle><path d="M6.8 18.4a5.6 5.6 0 0 1 10.4 0"></path></svg>
+          <span style="flex: 1; font-size: 15px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">내 정보</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; padding: 13px 20px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 15.5c1.8 0 2.2-8 4-8s.6 8 2.4 8 1.4-5 3.2-5 1.2 5 3 5h4.4"></path></svg>
+          <span style="flex: 1; font-size: 15px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">내 서명</span>
+          <span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 4px; background: #fdecec; color: var(--m-red); font-size: 11px; font-weight: 700;">미등록</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+      </div>
+
+      <div style="padding: 14px 0 8px;">
+        <div style="padding: 0 20px 4px; font-size: 12px; font-weight: 700; color: var(--m-ink-400); letter-spacing: -0.02em;">결제/정산</div>
+        <div onClick="{{ goBuy }}" style="display: flex; align-items: center; gap: 14px; padding: 13px 20px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-orange-50);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff6f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5A1.5 1.5 0 0 1 5 7h14a1.5 1.5 0 0 1 1.5 1.5v1.8a1.7 1.7 0 0 0 0 3.4v1.8A1.5 1.5 0 0 1 19 17H5a1.5 1.5 0 0 1-1.5-1.5v-1.8a1.7 1.7 0 0 0 0-3.4z"></path><path d="M12 9.5v5"></path></svg>
+          <span style="flex: 1; font-size: 15px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">이용권 구매</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+        <div onClick="{{ goPay }}" style="display: flex; align-items: center; gap: 14px; padding: 13px 20px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h12v17l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4-2 1.4z"></path><path d="M9 8.5h6M9 12h6"></path></svg>
+          <span style="flex: 1; font-size: 15px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">결제내역</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+        <div onClick="{{ goUse }}" style="display: flex; align-items: center; gap: 14px; padding: 13px 20px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2.5"></rect><path d="M8 15.5v-3M12 15.5v-6M16 15.5v-4.5"></path></svg>
+          <span style="flex: 1; font-size: 15px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">사용현황</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+        <div onClick="{{ goRwd }}" style="display: flex; align-items: center; gap: 14px; padding: 13px 20px; cursor: pointer; transition: background 140ms ease;" style-hover="background: var(--m-surface-gray);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="11.5" rx="2"></rect><path d="M3.5 12.5h17M12 8.5V20"></path><path d="M12 8.5c-3.2 0-4.6-.6-4.6-2.2S9.2 4.5 12 8.5zM12 8.5c3.2 0 4.6-.6 4.6-2.2S14.8 4.5 12 8.5z"></path></svg>
+          <span style="flex: 1; font-size: 15px; font-weight: 500; color: var(--m-ink-900); letter-spacing: -0.02em;">리워드 내역</span>
+          <span style="font-size: 13px; font-weight: 700; color: var(--m-green);">{{ rwdCashTotal }}원 지급완료</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+        </div>
+      </div>
+
+      <div style="margin: 12px 20px 0; border-top: 1px solid var(--m-line-200);"></div>
+      <div style="padding: 10px 0 28px; display: flex; flex-direction: column;">
+        <span onClick="{{ goNotice }}" style="padding: 11px 20px; font-size: 13.5px; color: var(--m-ink-500); cursor: pointer; transition: color 140ms ease;" style-hover="color: var(--m-ink-900);">공지사항</span>
+        <span onClick="{{ goCs }}" style="padding: 11px 20px; font-size: 13.5px; color: var(--m-ink-500); cursor: pointer; transition: color 140ms ease;" style-hover="color: var(--m-ink-900);">고객센터</span>
+        <span style="padding: 11px 20px; font-size: 13.5px; color: var(--m-ink-400); cursor: pointer; transition: color 140ms ease;" style-hover="color: var(--m-red);">로그아웃</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; z-index: 40; display: flex; flex-direction: column; justify-content: flex-end;">
+      <div onClick="{{ closeSheet }}" style="position: absolute; inset: 0; background: rgba(0,0,0,.55); animation: m-fade-in 200ms ease-out both;"></div>
+      <div style="position: relative; background: #fff; border-radius: 20px 20px 0 0; padding: 24px 20px 20px; box-shadow: 0 -6px 24px rgba(0,0,0,.16); animation: m-sheet-up 280ms cubic-bezier(.2,0,0,1) both;">
+        <div style="position: absolute; top: 10px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: 999px; background: var(--m-line-300);"></div>
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
+          <div>
+            <div style="font-size: 18px; font-weight: 700; color: var(--m-ink-900); letter-spacing: -0.02em;">어떤 계약을 작성하시나요?</div>
+            <div style="margin-top: 6px; font-size: 13px; color: var(--m-ink-500); line-height: 1.5;">계약 시작 시 이용권이 차감되며, 해당 이용권은<br>다른 계약에 사용할 수 없습니다.</div>
+          </div>
+          <div onClick="{{ closeSheet }}" style="flex: none; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <div onClick="{{ closeSheet }}" style="display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid var(--m-line-300); border-radius: 12px; cursor: pointer;" style-hover="border-color: var(--m-orange); background: var(--m-orange-50);">
+            <div style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: #fff4ec; display: flex; align-items: center; justify-content: center;">
+              <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+                <rect x="7" y="5" width="18" height="22" rx="3" fill="#ff6f0f"></rect>
+                <path d="M12 12h8M12 17h8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M16 27l-4-4h8l-4 4z" fill="#ff6f0f"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-size: 15px; font-weight: 700; color: var(--m-ink-900);">매입 계약 작성</div>
+              <div style="margin-top: 3px; font-size: 12px; color: var(--m-ink-500);">차량을 매입할 때 · 이용권 <span style="color: var(--m-orange); font-weight: 700;">1건</span> 차감</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+          </div>
+
+          <div onClick="{{ closeSheet }}" style="display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid var(--m-line-300); border-radius: 12px; cursor: pointer;" style-hover="border-color: var(--m-orange); background: var(--m-orange-50);">
+            <div style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: #f0f5fb; display: flex; align-items: center; justify-content: center;">
+              <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+                <rect x="7" y="5" width="18" height="22" rx="3" fill="#005cb9"></rect>
+                <path d="M12 12h8M12 17h8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M16 27l4-4h-8l4 4z" fill="#005cb9"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-size: 15px; font-weight: 700; color: var(--m-ink-900);">매도 계약 작성</div>
+              <div style="margin-top: 3px; font-size: 12px; color: var(--m-ink-500);">차량을 판매할 때 · 이용권 <span style="color: var(--m-orange); font-weight: 700;">2건</span> 차감</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2b2b2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; padding: 12px 14px; background: var(--m-surface-gray); border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: 12px; color: var(--m-ink-600);">사용 가능한 이용권</span>
+          <span style="font-size: 13px; font-weight: 700; color: var(--m-ink-900);">{{ availLabel }}</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:1400}}">
+class Component extends DCLogic {
+  state = { sheet: false, tip: false, arrowLeft: 0, screen: "home", open: null, doc: null, tr: null, toast: false,
+    statusSheet: false, statuses: ["결제 완료", "입금 대기", "결제 취소", "환불 요청", "환불 완료"], draft: null, page: 2 };
+  NOTICES = [
+    { cat: "서비스", pinned: true, title: "이용권 체계 통합 안내 (문서·이전 → 통합 이용권)", date: "2026.08.28", body: [
+      "기존 문서 이용권과 이전 이용권으로 나뉘어 있던 상품이 하나의 '이용권'으로 통합됩니다.",
+      "보유하신 잔여 이용권은 통합 이용권으로 자동 전환되며, 별도 신청은 필요하지 않습니다.",
+      "통합 이용권은 1건당 1,100원(부가세 포함)이며 최소 10건부터 구매할 수 있습니다."
+    ] },
+    { cat: "점검", pinned: true, title: "9월 정기 서버 점검 안내 (09.06 02:00~05:00)", date: "2026.08.25", body: [
+      "안정적인 서비스 제공을 위해 아래와 같이 정기 점검을 진행합니다.",
+      "점검 일시 : 2026년 9월 6일(일) 02:00 ~ 05:00 (3시간)",
+      "점검 시간 동안 이용권 구매, 계약서 발행 등 모든 서비스 이용이 제한됩니다."
+    ] },
+    { cat: "서비스", pinned: false, title: "할부·보험 상담 신청 기능 오픈", date: "2026.08.14", body: [
+      "홈 화면에서 고객의 할부·보험 상담을 바로 신청할 수 있습니다.",
+      "차량을 선택하고 고객 정보를 입력하면 안내 문자가 발송됩니다.",
+      "상담이 실제 계약으로 이어지면 광고비가 지급됩니다."
+    ] },
+    { cat: "결제", pinned: false, title: "가상계좌 입금 확인 지연 관련 안내", date: "2026.07.30", body: [
+      "일부 은행 점검 시간(23:30~00:30)에는 입금 확인이 최대 30분 지연될 수 있습니다.",
+      "입금 후에도 결제 상태가 '입금 대기'로 유지되면 고객센터로 문의해 주시기 바랍니다."
+    ] },
+    { cat: "약관", pinned: false, title: "개인정보 처리방침 개정 안내", date: "2026.07.11", body: [
+      "개인정보 처리방침이 2026년 7월 25일자로 개정됩니다.",
+      "주요 변경 사항은 위탁 업체 추가 및 보관 기간 명확화입니다."
+    ] },
+    { cat: "서비스", pinned: false, title: "성능점검기록부 서식 변경 적용", date: "2026.06.20", body: [
+      "법령 개정에 따라 성능점검기록부 서식이 변경되었습니다.",
+      "변경된 서식은 앱에 자동 반영되며, 기존에 발행된 문서에는 영향이 없습니다."
+    ] }
+  ];
+  QTYPES = ["이용권·결제", "계약서·문서", "할부·보험", "계정·정보 변경", "기타"];
+  INQUIRIES = [
+    { cat: "이용권·결제", title: "이용권 결제 후 잔여 건수가 반영되지 않습니다", date: "2026.08.29",
+      body: "8월 29일 오전에 30건을 결제했는데 잔여 이용권에 반영되지 않았습니다. 확인 부탁드립니다.",
+      answer: "확인 결과 결제는 정상 완료되었으며, 반영 지연 건은 8월 29일 14시에 처리되었습니다. 불편을 드려 죄송합니다.", answeredAt: "2026.08.29" },
+    { cat: "계약서·문서", title: "매도 계약서 발행 취소 방법 문의", date: "2026.08.12",
+      body: "잘못 발행한 매도 계약서를 취소하고 싶습니다. 이용권은 환급되나요?",
+      answer: "발행 당일에 한해 문서함에서 취소할 수 있으며, 취소 시 차감된 이용권은 자동으로 복구됩니다.", answeredAt: "2026.08.13" },
+    { cat: "할부·보험", title: "보험 광고비 지급 시점이 궁금합니다", date: "2026.08.02",
+      body: "보험 상담 신청 후 고객이 가입했는데 광고비는 언제 지급되나요?" }
+  ];
+  OWNED = 75;
+  INUSE = 5;
+  RWD_ITEMS = ["할부", "보험", "티맵HUD", "고트럭"];
+  RWD2 = [
+    { item: "할부", sub: "", unit: "cash", value: 60000, plate: "12가1234", model: "K5 2.0", paidAt: "2026-08-31" },
+    { item: "보험", sub: "다이렉트", unit: "cash", value: 60000, plate: "12가1234", model: "K5 2.0", paidAt: "2026-08-31" },
+    { item: "보험", sub: "다이렉트", unit: "pass", value: 5, plate: "12가1234", model: "K5 2.0", paidAt: "2026-08-31" },
+    { item: "보험", sub: "비교견적", unit: "pass", value: 5, plate: "12가1234", model: "K5 2.0", paidAt: "2026-08-31" },
+    { item: "티맵HUD", sub: "", unit: "pass", value: 30, plate: "12가1234", model: "K5 2.0", paidAt: "2026-08-31" },
+    { item: "고트럭", sub: "고객일감등록", unit: "pass", value: 3, plate: "12가1234", model: "K5 2.0", paidAt: "2026-08-31" },
+  ];
+  RWD = [
+    { item: "할부", unit: "cash", value: 150000, car: "123가 5933 · 쏘렌토", customer: "홍길동", state: "정산 예정" },
+    { item: "보험", unit: "cash", value: 100000, car: "24나 5933 · 쏘나타투 1.8", customer: "김영수", state: "정산 예정" },
+    { item: "추천 서비스", unit: "pass", value: 5, car: "서울 1 가 2354 · 그랜저 IG", customer: "박지훈", state: "정산 예정" },
+    { item: "할부", unit: "cash", value: 80000, car: "34다 7788 · K5 2.0", customer: "이수진", state: "정산 완료", paidAt: "2026. 04. 10" },
+    { item: "보험", unit: "cash", value: 100000, car: "24나 5933 · 쏘나타투 1.8", customer: "김영수", state: "정산 완료", paidAt: "2026. 04. 10" },
+    { item: "추천 서비스", unit: "pass", value: 7, car: "12가 1234 · 아반떼 CN7", customer: "최민호", state: "정산 완료", paidAt: "2026. 04. 10" },
+    { item: "추천 서비스", unit: "pass", value: 3, car: "90바 5566 · 카니발 4세대", customer: "장하늘", state: "정산 완료", paidAt: "2026. 04. 10" },
+    { item: "추천 서비스", unit: "pass", value: 5, car: "78마 3344 · 티볼리 1.6", customer: "오세훈", state: "정산 완료", paidAt: "2026. 03. 10" },
+    { item: "할부", unit: "cash", value: 150000, car: "56라 2211 · 스포티지", customer: "정다은", state: "정산 완료", paidAt: "2026. 04. 10" },
+    { item: "보험", unit: "cash", value: 0, car: "56라 2211 · 스포티지", customer: "정다은", state: "확인 중" },
+    { item: "할부", unit: "cash", value: 0, car: "78마 3344 · 티볼리", customer: "오세훈", state: "미성사" },
+    { item: "보험", unit: "cash", value: 120000, car: "90바 5566 · 카니발", customer: "장하늘", state: "보류" },
+  ];
+  CARS = [
+    { plate: "24나 5933", model: "쏘나타투1.8", offerNo: "2024057500", year: "1994년식", km: "152,336 Km", price: 5000000, tag: "계약 진행 중" },
+    { plate: "123가 5933", model: "쏘렌토", offerNo: "2024057500", year: "1994년식", km: "152,336 Km", price: 5000000 },
+    { plate: "서울 1 가 2354", model: "차종 이름이 길어도 한 줄 까지만 표시합니다. 차종 이름이 길어도", offerNo: "2024057500", year: "1994년식", km: "152,336 Km", price: 14000000 },
+  ];
+  CARRIERS = [
+    { name: "삼성화재", code: "samsung" },
+    { name: "DB손해보험", code: "db" },
+    { name: "현대해상", code: "hyundai" },
+    { name: "KB손해보험", code: "kb" },
+    { name: "메리츠화재", code: "meritz" },
+    { name: "한화손해보험", code: "hanwha" },
+    { name: "롯데손해보험", code: "lotte" },
+  ];
+  CONTACTS = [
+    { name: "홍길동", phone: "010-1234-1234" },
+    { name: "김영수", phone: "010-2233-7788" },
+    { name: "박지훈 (오토카)", phone: "010-5555-0101" },
+    { name: "이수진", phone: "010-8899-2020" },
+  ];
+  USE_DAYS = [
+    { date: "4월 30일", groups: [
+      { kind: "차감", count: 10, rows: [
+        { type: "매입", count: 1, plate: "24나 5933", model: "쏘나타두 1.8", time: "오후 10:57:17" },
+        { type: "매도", count: 2, plate: "서울 30 가 2354", model: "차량이름이 길어도 말줄임 처리됩니다", time: "오후 10:57:17" },
+        { type: "매도", count: 1, badge: "성능점검 미포함", plate: "24나 5933", model: "쏘나타두 1.8", time: "오후 10:57:17" },
+        { type: "이전", count: 5, plate: "24나 5933", model: "쏘나타두 1.8", time: "오후 10:57:17" },
+      ] },
+      { kind: "만료", count: 3, rows: [
+        { type: "이용권", count: 3, plate: "유효기간 만료", model: "2026-04-30 만료", time: "오후 11:59:59" },
+      ] },
+    ] },
+    { date: "4월 27일", groups: [
+      { kind: "만료", count: 1, rows: [
+        { type: "이용권", count: 1, plate: "유효기간 만료", model: "2026-04-27 만료", time: "오후 11:59:59" },
+      ] },
+    ] },
+    { date: "4월 24일", groups: [
+      { kind: "차감", count: 8, rows: [
+        { type: "매도", count: 2, plate: "12가 1234", model: "그랜저 IG 2.4", time: "오후 03:21:08" },
+        { type: "매입", count: 1, plate: "12가 1234", model: "그랜저 IG 2.4", time: "오후 03:19:44" },
+        { type: "이전", count: 5, plate: "34다 7788", model: "K5 2.0", time: "오전 11:02:31" },
+      ] },
+    ] },
+  ];
+  STATUS_ALL = ["결제 완료", "입금 대기", "결제 취소", "환불 요청", "환불 완료"];
+  ROWS = [
+    { status: "결제 완료", no: "260311-00005", amount: 11000, item: "이용권 10건", breakdown: "(1건 × 1,100원)", method: "카드 결제", methodNote: "" },
+    { status: "결제 완료", no: "260311-00004", amount: 55000, item: "이용권 50건", breakdown: "(1건 × 1,100원)", method: "카드 결제", methodNote: "" },
+    { status: "결제 취소", no: "260311-00003", amount: 33000, item: "이용권 30건", breakdown: "(1건 × 1,100원)", method: "가상계좌", methodNote: "(취소사유: 입금 기한 만료)" },
+    { status: "결제 완료", no: "260311-00002", amount: 22000, item: "이용권 20건", breakdown: "(1건 × 1,100원)", method: "카드 결제", methodNote: "" },
+    { status: "결제 완료", no: "260311-00001", amount: 110000, item: "이용권 100건", breakdown: "(1건 × 1,100원)", method: "가상계좌", methodNote: "", fail: "(실패사유: 이용권 사용, 내용이 길어져도…)" },
+  ];
+  iconRef = React.createRef();
+  stripRef = React.createRef();
+  DOC = [
+    { amount: 11000, total: 10, base: 10, bonus: 0 },
+    { amount: 22000, total: 20, base: 20, bonus: 0 },
+    { amount: 33000, total: 30, base: 30, bonus: 0 },
+    { amount: 55000, total: 53, base: 50, bonus: 3 },
+    { amount: 110000, total: 107, base: 100, bonus: 7 },
+    { amount: 330000, total: 330, base: 300, bonus: 30 },
+    { amount: 550000, total: 563, base: 500, bonus: 63 },
+  ];
+  TR = [
+    { amount: 11000, total: 10, base: 10, bonus: 0 },
+    { amount: 22000, total: 20, base: 20, bonus: 0 },
+    { amount: 55000, total: 53, base: 50, bonus: 3 },
+    { amount: 110000, total: 107, base: 100, bonus: 7 },
+  ];
+  won(n) { return n.toLocaleString("ko-KR") + "원"; }
+  packs(list, key) {
+    return list.map((p, i) => ({
+      price: p.amount.toLocaleString("ko-KR") + " 원",
+      count: p.total + "건",
+      hasBonus: p.bonus > 0,
+      base: p.base + "건",
+      bonus: "+ " + p.bonus + "건",
+      pick: () => this.setState({ [key]: i, open: null }),
+    }));
+  }
+  renderVals() {
+    const doc = this.state.doc === null ? null : this.DOC[this.state.doc];
+    const tr = this.state.tr === null ? null : this.TR[this.state.tr];
+    const qty = this.state.qty === undefined || this.state.qty === null ? "" : this.state.qty;
+    const n = parseInt(qty, 10) || 0;
+    const valid = n >= 10;
+    const total = valid ? n * 1100 : 0;
+    const rwdSel = this.state.rwdSel || this.RWD_ITEMS;
+    const rwdRows = this.RWD2.filter(r => rwdSel.indexOf(r.item) >= 0);
+    const insReady = this.state.mode !== "insurance" ? true
+      : this.state.kind === "비교견적" ? true
+      : this.state.kind === "다이렉트" && !!this.state.carrier;
+    const car = this.state.car === null || this.state.car === undefined ? null : this.CARS[this.state.car];
+    const picked = [];
+    if (doc) picked.push({ name: "문서 이용권", count: doc.total + "건", price: this.won(doc.amount) });
+    if (tr) picked.push({ name: "이전 이용권", count: tr.total + "건", price: this.won(tr.amount) });
+    return {
+      qtyVal: String(qty),
+      onQty: (e) => this.setState({ qty: e.target.value.replace(/[^0-9]/g, "").slice(0, 4) }),
+      inc: () => this.setState({ qty: String(n < 10 ? 10 : n + 1) }),
+      dec: () => n > 10 && this.setState({ qty: String(n - 1) }),
+      decBg: n > 10 ? "var(--m-surface-gray)" : "#fafbfc",
+      decColor: n > 10 ? "#555b63" : "#d2d2d2",
+      decCursor: n > 10 ? "pointer" : "not-allowed",
+      qtyBorder: n > 0 && !valid ? "var(--m-red)" : valid ? "var(--m-orange)" : "var(--m-line-300)",
+      qtyHint: n > 0 && !valid ? "최소 10건부터 구매할 수 있습니다." : "1건당 1,100원 (부가세 포함)",
+      hintColor: n > 0 && !valid ? "var(--m-red)" : "var(--m-ink-400)",
+      quicks: [20, 30, 40, 50].map(v => {
+        const on = n === v;
+        return { label: v + "건", bg: on ? "var(--m-orange-50)" : "#fff",
+          border: on ? "var(--m-orange)" : "var(--m-line-300)",
+          color: on ? "var(--m-orange)" : "var(--m-ink-700)",
+          go: () => this.setState({ qty: String(v) }) };
+      }),
+      buyCount: n + "건",
+      isBuy: this.state.screen === "buy",
+      goBuy: () => this.setState(s => ({ screen: "buy", from: s.screen, tip: false, sheet: false, open: null, qty: "10" })),
+      docPacks: this.packs(this.DOC, "doc"),
+      trPacks: this.packs(this.TR, "tr"),
+      docPicked: !!doc,
+      trPicked: !!tr,
+      clearDoc: (e) => { e.stopPropagation(); this.setState({ doc: null, open: null }); },
+      clearTr: (e) => { e.stopPropagation(); this.setState({ tr: null, open: null }); },
+      docOpen: this.state.open === "doc",
+      trOpen: this.state.open === "tr",
+      selectOpen: this.state.open !== null,
+      closeSelects: () => this.setState({ open: null }),
+      toggleDoc: () => this.setState(s => ({ open: s.open === "doc" ? null : "doc" })),
+      toggleTr: () => this.setState(s => ({ open: s.open === "tr" ? null : "tr" })),
+      docLabel: doc ? doc.total + "건 · " + this.won(doc.amount) : "선택",
+      trLabel: tr ? tr.total + "건 · " + this.won(tr.amount) : "선택",
+      docTextColor: doc ? "var(--m-ink-900)" : "var(--m-ink-400)",
+      trTextColor: tr ? "var(--m-ink-900)" : "var(--m-ink-400)",
+      docCaret: this.state.open === "doc" ? "180deg" : "0deg",
+      trCaret: this.state.open === "tr" ? "180deg" : "0deg",
+      picked,
+      hasPick: total > 0,
+      noPick: total === 0,
+      totalText: this.won(total),
+      totalColor: total > 0 ? "var(--m-orange)" : "var(--m-ink-900)",
+      payToast: this.state.toast,
+      pay: () => {
+        this.setState({ toast: true });
+        clearTimeout(this._t);
+        this._t = setTimeout(() => this.setState({ toast: false }), 2200);
+      },
+      isRwd: this.state.screen === "rwd",
+      goRwd: () => this.setState(s => ({ screen: "rwd", from: s.screen, tip: false, sheet: false })),
+      availLabel: this.OWNED - this.INUSE + "건",
+      inUseLabel: String(this.INUSE),
+      availNum: String(this.OWNED - this.INUSE),
+      ownedLabel: "보유 " + this.OWNED + "건",
+      rwdCashTotal: this.RWD2.filter(r => r.unit === "cash")
+        .reduce((s, r) => s + r.value, 0).toLocaleString("ko-KR"),
+      rwdFilterLabel: rwdSel.length === this.RWD_ITEMS.length ? "전체"
+        : rwdSel.length === 0 ? "항목 선택"
+        : rwdSel.length === 1 ? rwdSel[0] : rwdSel[0] + " 외 " + (rwdSel.length - 1) + "건",
+      rwdSheet: !!this.state.rwdSheet,
+      openRwdFilter: () => this.setState({ rwdSheet: true, rwdDraft: rwdSel.slice() }),
+      closeRwdFilter: () => this.setState({ rwdSheet: false, rwdDraft: null }),
+      applyRwdFilter: () => this.setState(s => ({ rwdSheet: false, rwdSel: s.rwdDraft || rwdSel, rwdDraft: null })),
+      rwdOpts: (() => {
+        const sel = this.state.rwdDraft || rwdSel;
+        const all = sel.length === this.RWD_ITEMS.length;
+        const opt = (label, on, toggle) => ({ label, boxBg: on ? "var(--m-orange)" : "#fff",
+          boxBorder: on ? "var(--m-orange)" : "var(--m-line-300)",
+          textColor: on ? "var(--m-orange)" : "var(--m-ink-500)", toggle });
+        return [opt("전체", all, () => this.setState({ rwdDraft: all ? [] : this.RWD_ITEMS.slice() }))].concat(
+          this.RWD_ITEMS.map(it => opt(it, sel.indexOf(it) >= 0, () => this.setState(s => {
+            const cur = (s.rwdDraft || rwdSel).slice();
+            const i = cur.indexOf(it);
+            if (i >= 0) cur.splice(i, 1); else cur.push(it);
+            return { rwdDraft: cur };
+          })))
+        );
+      })(),
+      rwdRows: rwdRows.map(r => ({
+        item: r.item, sub: r.sub, plate: r.plate, model: r.model, paidAt: r.paidAt,
+        amount: r.unit === "pass" ? r.value + " 건" : r.value.toLocaleString("ko-KR") + "원",
+        unitLabel: r.unit === "pass" ? "전자계약 이용권" : "현금 정산",
+      })),
+      rwdEmpty: rwdRows.length === 0,
+      rwdTotal: rwdRows.length === 0 ? "0" : "226",
+      rwdPages: [1, 2, 3].map(n => ({
+        n: String(n),
+        weight: n === (this.state.rwdPage || 2) ? "700" : "500",
+        color: n === (this.state.rwdPage || 2) ? "var(--m-orange)" : "var(--m-ink-700)",
+        go: () => this.setState({ rwdPage: n }),
+      })),
+      isApply: this.state.screen === "apply",
+      applyTitle: this.state.mode === "insurance" ? "보험 상담 신청" : "할부 신청",
+      applyLead: this.state.mode === "insurance" ? "보험 상담을 신청할 차량을 선택하세요" : "할부 상담을 신청할 차량을 선택하세요",
+      goFinance: () => this.setState({ screen: "apply", mode: "finance", from: "home", step: "list", car: null, cName: "", cPhone: "" }),
+      goInsurance: () => this.setState({ screen: "apply", mode: "insurance", from: "home", step: "list", car: null, cName: "", cPhone: "", kind: null, carrier: null, dd: null }),
+      applyList: this.state.step !== "form",
+      applyForm: this.state.step === "form",
+      applyBack: () => this.state.step === "form"
+        ? this.setState({ step: "list", car: null, cName: "", cPhone: "" })
+        : this.setState({ screen: "home" }),
+      applyCars: this.CARS.map((c, i) => ({
+        plate: c.plate, model: c.model, offerNo: c.offerNo, year: c.year, km: c.km,
+        price: c.price.toLocaleString("ko-KR") + " 원",
+        hasTag: !!c.tag,
+        pick: () => this.setState({ step: "form", car: i }),
+      })),
+      carPlate: car ? car.plate : "", carModel: car ? car.model : "",
+      carOfferNo: car ? car.offerNo : "", carYear: car ? car.year : "", carKm: car ? car.km : "",
+      carPrice: car ? car.price.toLocaleString("ko-KR") + " 원" : "",
+      nameVal: this.state.cName || "",
+      phoneVal: this.state.cPhone || "",
+      onName: (e) => this.setState({ cName: e.target.value }),
+      onPhone: (e) => this.setState({ cPhone: e.target.value.replace(/[^0-9-]/g, "") }),
+      custPhone: this.state.cPhone || "",
+      smsLine1: this.state.mode === "insurance"
+        ? "안녕하세요 고객님, 오늘 상담드린 차량 보험 건으로 연락드립니다."
+        : "안녕하세요 고객님, 오늘 상담드린 차량 금융 건으로 연락드립니다.",
+      smsLine2: this.state.mode === "insurance"
+        ? "아래 링크에서 간단한 정보 입력과 동의를 완료하시면 제휴 보험사 신청 페이지로 바로 연결됩니다."
+        : "아래 링크에서 간단한 정보 입력과 동의를 완료하시면 제휴 금융사 신청 페이지로 바로 연결됩니다.",
+      contactsOpen: !!this.state.contacts,
+      openContacts: () => {
+        const c = this.CONTACTS[0];
+        this.setState({ contacts: true, cName: c.name, cPhone: c.phone });
+        clearTimeout(this._c);
+        this._c = setTimeout(() => this.setState({ contacts: false }), 2600);
+      },
+      adFeeOpen: !!this.state.adFee,
+      openAdFee: () => this.setState({ adFee: true }),
+      closeAdFee: () => this.setState({ adFee: false }),
+      isInsurance: this.state.mode === "insurance",
+      needCarrier: this.state.kind === "다이렉트",
+      kindOpen: this.state.dd === "kind",
+      carrierOpen: this.state.dd === "carrier",
+      toggleKind: () => this.setState(s => ({ dd: s.dd === "kind" ? null : "kind" })),
+      toggleCarrier: () => this.setState(s => ({ dd: s.dd === "carrier" ? null : "carrier" })),
+      kindLabel: this.state.kind || "선택",
+      kindColor: this.state.kind ? "var(--m-ink-900)" : "var(--m-ink-400)",
+      kindCaret: this.state.dd === "kind" ? "180deg" : "0deg",
+      carrierLabel: this.state.carrier || "보험사 선택",
+      carrierColor: this.state.carrier ? "var(--m-ink-900)" : "var(--m-ink-400)",
+      carrierCaret: this.state.dd === "carrier" ? "180deg" : "0deg",
+      kinds: ["비교견적", "다이렉트"].map(k => {
+        const on = this.state.kind === k;
+        return { label: k, color: on ? "var(--m-orange)" : "var(--m-ink-800)",
+          border: on ? "var(--m-orange)" : "var(--m-line-300)", bg: on ? "#fff" : "#fff",
+          weight: on ? "700" : "500",
+          pick: () => this.setState({ kind: k, carrier: null, dd: null }) };
+      }),
+      carriers: this.CARRIERS.map(c => ({
+        label: c.name, color: this.state.carrier === c.name ? "var(--m-orange)" : "var(--m-ink-800)",
+        pick: () => this.setState({ carrier: c.name, dd: null }),
+      })),
+      smsUrl: (() => {
+        if (this.state.mode !== "insurance") return "https://mb365.kr/f-a1b";
+        if (this.state.kind === "비교견적") return "https://mb365.kr/ins/compare/a1b";
+        const c = this.CARRIERS.filter(x => x.name === this.state.carrier)[0];
+        return c ? "https://mb365.kr/ins/" + c.code + "/a1b" : "https://mb365.kr/ins/a1b";
+      })(),
+      canSend: !!this.state.cPhone && insReady,
+      cantSend: !(!!this.state.cPhone && insReady),
+      smsToast: this.state.sms,
+      sendSms: () => {
+        this.setState({ sms: true });
+        clearTimeout(this._s);
+        this._s = setTimeout(() => this.setState({ sms: false }), 2600);
+      },
+      isUse: this.state.screen === "use",
+      goUse: () => this.setState(s => ({ screen: "use", from: s.screen, tip: false, sheet: false, open: null })),
+      useTabs: [["월별", "month"], ["연별", "year"]].map(([label, key]) => {
+        const on = (this.state.useTab || "month") === key;
+        return { label, bg: on ? "#fff" : "transparent", shadow: on ? "0 2px 8px rgba(0,0,0,.10)" : "none",
+          weight: on ? "700" : "500", color: on ? "var(--m-ink-900)" : "var(--m-ink-400)",
+          go: () => this.setState({ useTab: key }) };
+      }),
+      periodLabel: (this.state.useTab || "month") === "year" ? "2026년" : "2026년   4월",
+      prevPeriod: () => {}, nextPeriod: () => {},
+      useChips: [["전체 22", "all"], ["차감 18", "차감"], ["만료 4", "만료"]].map(([label, key]) => {
+        const on = (this.state.useChip || "all") === key;
+        return { label, bg: on ? "#5c6066" : "#fff", border: on ? "#5c6066" : "var(--m-line-300)",
+          color: on ? "#fff" : "var(--m-ink-600)", go: () => this.setState({ useChip: key }) };
+      }),
+      useDays: this.USE_DAYS.map(d => ({
+        date: d.date,
+        groups: d.groups.filter(g => (this.state.useChip || "all") === "all" || g.kind === this.state.useChip).map(g => {
+          const id = d.date + g.kind;
+          const open = (this.state.useOpen || {})[id];
+          return {
+            kind: g.kind, count: "- " + g.count + "건", open: !!open, caret: open ? "180deg" : "0deg",
+            barColor: g.kind === "차감" ? "var(--m-red)" : "var(--m-line-300)",
+            textColor: g.kind === "차감" ? "var(--m-red)" : "var(--m-ink-800)",
+            toggle: () => this.setState(s => {
+              const m = Object.assign({}, s.useOpen);
+              m[id] = !m[id];
+              return { useOpen: m };
+            }),
+            rows: (g.rows || []).map(r => ({
+              type: r.type, hasBadge: !!r.badge, badge: r.badge || "",
+              count: "- " + r.count + "건", plate: r.plate, model: r.model, time: r.time,
+            })),
+          };
+        }),
+      })).filter(d => d.groups.length > 0),
+      isPay: this.state.screen === "pay",
+      goPay: () => this.setState(s => ({ screen: "pay", from: s.screen, tip: false, sheet: false, open: null })),
+      goBack: () => this.setState(s => ({ screen: s.from === "more" ? "more" : "home", from: null, open: null })),
+      openStatus: () => this.setState({ statusSheet: true, draft: this.state.statuses.slice() }),
+      closeStatus: () => this.setState({ statusSheet: false, draft: null }),
+      applyStatus: () => this.setState(s => ({ statusSheet: false, statuses: s.draft || s.statuses, draft: null, page: 1 })),
+      statusSheet: this.state.statusSheet,
+      statusLabel: this.state.statuses.length === this.STATUS_ALL.length ? "모든 상태"
+        : this.state.statuses.length === 0 ? "상태 선택"
+        : this.state.statuses.length === 1 ? this.state.statuses[0]
+        : this.state.statuses[0] + " 외 " + (this.state.statuses.length - 1) + "건",
+      statusOpts: (() => {
+        const sel = this.state.draft || this.state.statuses;
+        const all = sel.length === this.STATUS_ALL.length;
+        const opt = (label, on, toggle) => ({
+          label, on,
+          boxBg: on ? "var(--m-orange)" : "#fff",
+          boxBorder: on ? "var(--m-orange)" : "var(--m-line-300)",
+          textColor: on ? "var(--m-orange)" : "var(--m-ink-500)",
+          toggle,
+        });
+        return [opt("모든 상태", all, () => this.setState({ draft: all ? [] : this.STATUS_ALL.slice() }))].concat(
+          this.STATUS_ALL.map(st => opt(st, sel.indexOf(st) >= 0, () => this.setState(s => {
+            const cur = (s.draft || s.statuses).slice();
+            const i = cur.indexOf(st);
+            if (i >= 0) cur.splice(i, 1); else cur.push(st);
+            return { draft: cur };
+          })))
+        );
+      })(),
+      payRows: this.ROWS.filter(r => this.state.statuses.indexOf(r.status) >= 0).map(r => {
+        const cancelled = r.status === "결제 취소";
+        return {
+          status: r.status,
+          no: r.no,
+          amount: this.won(r.amount),
+          statusColor: cancelled ? "var(--m-ink-500)" : "var(--m-ink-900)",
+          amountColor: cancelled ? "var(--m-ink-400)" : "var(--m-ink-900)",
+          amountLine: cancelled ? "line-through" : "none",
+          item: r.item, breakdown: r.breakdown, method: r.method, methodNote: r.methodNote,
+          hasItem2: !!r.item2, item2: r.item2 || "", breakdown2: r.breakdown2 || "",
+          hasFail: !!r.fail, failNote: r.fail || "",
+        };
+      }),
+      payEmpty: this.ROWS.filter(r => this.state.statuses.indexOf(r.status) >= 0).length === 0,
+      payTotal: this.ROWS.filter(r => this.state.statuses.indexOf(r.status) >= 0).length === 0 ? "0" : "226",
+      pages: [1, 2, 3].map(n => ({
+        n: String(n),
+        weight: n === this.state.page ? "700" : "500",
+        color: n === this.state.page ? "var(--m-orange)" : "var(--m-ink-700)",
+        go: () => this.setState({ page: n }),
+      })),
+      isHome: this.state.screen === "home",
+      isNotice: this.state.screen === "notice",
+      noticeList: this.state.noticeId == null,
+      noticeView: this.state.noticeId != null,
+      notices: this.NOTICES.map((n, i) => ({
+        ...n, open: () => this.setState({ noticeId: i })
+      })),
+      nvCat: (this.NOTICES[this.state.noticeId] || {}).cat,
+      nvTitle: (this.NOTICES[this.state.noticeId] || {}).title,
+      nvDate: (this.NOTICES[this.state.noticeId] || {}).date,
+      nvBody: ((this.NOTICES[this.state.noticeId] || {}).body || []).map(text => ({ text })),
+      goNotice: () => this.setState({ screen: "notice", noticeId: null, tip: false, sheet: false }),
+      noticeToList: () => this.setState({ noticeId: null }),
+      noticeBack: () => this.state.noticeId != null
+        ? this.setState({ noticeId: null })
+        : this.setState({ screen: "more" }),
+
+      isCs: this.state.screen === "cs",
+      csTitle: this.state.csStep === "form" ? "문의하기" : "고객센터",
+      csList: this.state.csStep !== "form",
+      csForm: this.state.csStep === "form",
+      goCs: () => this.setState({ screen: "cs", csStep: "list", csOpen: null, tip: false, sheet: false }),
+      csBack: () => this.state.csStep === "form"
+        ? this.setState({ csStep: "list" })
+        : this.setState({ screen: "more" }),
+      csNew: () => this.setState({ csStep: "form", qType: null, qTypeOpen: false, qTitle: "", qBody: "", qPhone: "" }),
+      inquiries: (this.state.inquiries || this.INQUIRIES).map((q, i) => ({
+        ...q,
+        answered: !!q.answer,
+        status: q.answer ? "답변완료" : "접수",
+        badgeBg: q.answer ? "#ffe9d9" : "var(--m-surface-gray)",
+        badgeColor: q.answer ? "var(--m-orange)" : "var(--m-ink-500)",
+        open: this.state.csOpen === i,
+        toggle: () => this.setState(s => ({ csOpen: s.csOpen === i ? null : i }))
+      })),
+      qTypes: this.QTYPES.map(label => ({ label, pick: () => this.setState({ qType: label, qTypeOpen: false }) })),
+      qTypeLabel: this.state.qType || "문의 유형을 선택하세요",
+      qTypeColor: this.state.qType ? "var(--m-ink-900)" : "var(--m-ink-400)",
+      qTypeCaret: this.state.qTypeOpen ? "180deg" : "0deg",
+      qTypeOpen: !!this.state.qTypeOpen,
+      toggleQType: () => this.setState(s => ({ qTypeOpen: !s.qTypeOpen })),
+      qTitleVal: this.state.qTitle || "",
+      onQTitle: e => this.setState({ qTitle: e.target.value }),
+      qBodyVal: this.state.qBody || "",
+      onQBody: e => this.setState({ qBody: e.target.value.slice(0, 300) }),
+      qBodyCount: (this.state.qBody || "").length,
+      qPhoneVal: this.state.qPhone || "",
+      onQPhone: e => this.setState({ qPhone: e.target.value }),
+      canSubmitQ: !!(this.state.qType && (this.state.qTitle || "").trim() && (this.state.qBody || "").trim()),
+      cantSubmitQ: !(this.state.qType && (this.state.qTitle || "").trim() && (this.state.qBody || "").trim()),
+      submitQ: () => {
+        const list = (this.state.inquiries || this.INQUIRIES).slice();
+        list.unshift({ cat: this.state.qType, title: this.state.qTitle.trim(), date: "2026.09.02", body: this.state.qBody.trim() });
+        this.setState({ inquiries: list, csStep: "list", csOpen: null, csToast: true });
+        clearTimeout(this._cs);
+        this._cs = setTimeout(() => this.setState({ csToast: false }), 2600);
+      },
+      csToast: !!this.state.csToast,
+
+      isNoti: this.state.screen === "noti",
+      isMore: this.state.screen === "more",
+      goMore: () => this.setState({ screen: "more", tip: false, sheet: false }),
+      goNoti: () => this.setState({ screen: "noti", tip: false, sheet: false }),
+      goHome: () => this.setState({ screen: "home" }),
+      tipOpen: this.state.tip,
+      iconRef: this.iconRef,
+      stripRef: this.stripRef,
+      arrowLeft: this.state.arrowLeft + "px",
+      toggleTip: (e) => {
+        e.stopPropagation();
+        let arrowLeft = this.state.arrowLeft;
+        const i = this.iconRef.current, s = this.stripRef.current;
+        if (i && s) {
+          const ir = i.getBoundingClientRect(), sr = s.getBoundingClientRect();
+          arrowLeft = ir.left + ir.width / 2 - sr.left - 16 - 7;
+        }
+        this.setState(st => ({ tip: !st.tip, arrowLeft }));
+      },
+      closeTip: () => this.setState({ tip: false }),
+      sheetOpen: this.state.sheet,
+      openSheet: () => this.setState({ sheet: true }),
+      closeSheet: () => this.setState({ sheet: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>
